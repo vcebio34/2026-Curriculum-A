@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fawzan's VCE Biology Masterclass</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #020203; color: #e2e8f0; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0f0f12; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3730a3; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #4338ca; }
+        .animate-in { animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(10px); }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // --- ICONS (SVG Components) ---
+        const GraduationCap = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>;
+        const Search = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>;
+        const Layers = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12.83 2.44 9.8 5.5a.25.25 0 0 1 0 .44l-9.8 5.5a1 1 0 0 1-.86 0l-9.8-5.5a.25.25 0 0 1 0-.44l9.8-5.5a1 1 0 0 1 .86 0Z"/><path d="m22.63 9.33-9.8 5.5a.25.25 0 0 1 0 .44l9.8 5.5a1 1 0 0 0 1.14 0l-9.8-5.5a.25.25 0 0 0 0-.44l9.8-5.5a1 1 0 0 0-.86 0Z"/><path d="m1.37 9.33 9.8 5.5a.25.25 0 0 0 0 .44l-9.8 5.5a1 1 0 0 1-1.14 0l9.8-5.5a.25.25 0 0 1 0-.44l-9.8-5.5a1 1 0 0 1 .86 0Z"/></svg>;
+        const ChevronLeft = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>;
+        const ChevronRight = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>;
+        const Microscope = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg>;
+        const BookOpen = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>;
+        const Zap = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>;
+        const ClipboardList = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>;
+        const Info = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>;
+        const CheckCircle2 = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>;
+
+        // --- DATASET: 32 SESSIONS ---
+        const SESSIONS_DATA = {
+            1: {
+                title: "DNA & The Molecular Code",
+                aos: "Unit 3 AOS 1",
+                jacarandaDeepDive: "Chapter 1: The structure and role of nucleic acids.",
+                glossary: [
+                    { term: "Nucleotide", def: "Monomer of nucleic acids (Pentose sugar, Phosphate, Nitrogenous base)." },
+                    { term: "Phosphodiester bond", def: "Covalent bond between the 3' carbon of one sugar and 5' phosphate of another." },
+                    { term: "Antiparallel", def: "Strands run in opposite directions (5' to 3' and 3' to 5')." },
+                    { term: "Purine", def: "Double-ringed bases (Adenine, Guanine)." },
+                    { term: "Pyrimidine", def: "Single-ringed bases (Cytosine, Thymine, Uracil)." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Chemical Anatomy", details: ["DNA is a double helix of antiparallel strands held by hydrogen bonds between complementary bases (A-T=2, G-C=3).", "RNA is single-stranded, contains Ribose (OH at 2' C), and uses Uracil instead of Thymine."] },
+                    { subhead: "Functional RNA", details: ["mRNA: Carries genetic code from nucleus to ribosome.", "tRNA: Transports amino acids; features anticodon.", "rRNA: Structural/catalytic component of ribosomes."] }
+                ],
+                vceWebTricks: ["Higher G-C content = Higher melting temperature due to 3 H-bonds.", "Condensation reactions form the backbone; Hydrogen bonds form the rungs."],
+                questions: [
+                    { q: "Explain the structural difference between purines and pyrimidines. [2 marks]", hint: "Purines: Double ring; Pyrimidines: Single ring." },
+                    { q: "Why is DNA described as antiparallel? [2 marks]", hint: "One strand runs 5'-3', the other 3'-5'." },
+                    { q: "Identify the bond formed during condensation polymerisation. [1 mark]", hint: "Phosphodiester bond." },
+                    { q: "Contrast the sugar in DNA vs RNA. [2 marks]", hint: "Deoxyribose (H at 2') vs Ribose (OH at 2')." },
+                    { q: "How many hydrogen bonds between Cytosine and Guanine? [1 mark]", hint: "Three." }
+                ]
+            },
+            2: {
+                title: "Protein Hierarchy & Proteome",
+                aos: "Unit 3 AOS 1",
+                jacarandaDeepDive: "Chapter 2: Protein structure and function.",
+                glossary: [
+                    { term: "Proteome", def: "Total set of proteins expressed by a genome." },
+                    { term: "R-group", def: "Variable side chain determining AA properties." },
+                    { term: "Peptide Bond", def: "Covalent bond between amino acids." },
+                    { term: "Denaturation", def: "Loss of 3D structure (Tertiary/Secondary)." },
+                    { term: "Alpha Helix", def: "Secondary coil stabilized by H-bonds." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Amino Acids", details: ["Monomers joined by condensation polymerisation at the ribosome.", "R-groups can be polar, non-polar, acidic, or basic."] },
+                    { subhead: "Folding Levels", details: ["Primary: Sequence of AAs.", "Secondary: Alpha-helices/Beta-sheets (H-bonds).", "Tertiary: 3D shape (R-group interactions).", "Quaternary: Multiple subunits."] }
+                ],
+                vceWebTricks: ["Proteome > Genome due to alternative splicing.", "Denaturation does not break peptide bonds (primary structure)."],
+                questions: [
+                    { q: "Define 'Proteome'. [1 mark]", hint: "All proteins expressed by a cell/organism." },
+                    { q: "What determines the tertiary structure? [2 marks]", hint: "Interactions between R-groups (disulfide, ionic, etc)." },
+                    { q: "Identify the bonds in secondary structure. [1 mark]", hint: "Hydrogen bonds in the backbone." },
+                    { q: "Explain the effect of high temp on proteins. [2 marks]", hint: "Denaturation: Bonds break, shape lost, function lost." },
+                    { q: "Why is the proteome larger than the genome? [2 marks]", hint: "Alternative splicing creates multiple proteins per gene." }
+                ]
+            },
+            3: {
+                title: "Gene Structure & Regulation",
+                aos: "Unit 3 AOS 1",
+                jacarandaDeepDive: "Chapter 3: Operons and Eukaryotic genes.",
+                glossary: [
+                    { term: "Operon", def: "Cluster of genes under one promoter (Prokaryotes)." },
+                    { term: "Promoter", def: "RNA Polymerase binding site." },
+                    { term: "Operator", def: "Repressor binding site." },
+                    { term: "Intron", def: "Non-coding region removed in splicing." },
+                    { term: "Exon", def: "Coding region expressed in mRNA." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Trp Operon", details: ["Repression: Trp binds repressor -> binds operator -> blocks transcription.", "Attenuation: Ribosome speed determines if terminator loop forms."] },
+                    { subhead: "Eukaryotic Genes", details: ["Contain Introns/Exons.", "Post-transcriptional mods: 5' Cap, 3' Tail, Splicing."] }
+                ],
+                vceWebTricks: ["Bacteria lack introns.", "Repression prevents start; Attenuation stops completion."],
+                questions: [
+                    { q: "Role of the Operator? [1 mark]", hint: "Binding site for Repressor protein." },
+                    { q: "Explain attenuation when Trp is high. [3 marks]", hint: "Ribosome fast -> 3-4 loop -> RNA Poly detaches." },
+                    { q: "Contrast Introns and Exons. [2 marks]", hint: "Introns removed/non-coding; Exons joined/coding." },
+                    { q: "Why add a Poly-A tail? [1 mark]", hint: "Stability and nuclear export." },
+                    { q: "What binds to the Promoter? [1 mark]", hint: "RNA Polymerase." }
+                ]
+            },
+            4: {
+                title: "Protein Secretion Pathway",
+                aos: "Unit 3 AOS 1",
+                jacarandaDeepDive: "Chapter 4: The secretory route.",
+                glossary: [
+                    { term: "Exocytosis", def: "Bulk export requiring ATP." },
+                    { term: "Golgi", def: "Modifies and packages proteins." },
+                    { term: "Rough ER", def: "Folds and transports proteins." },
+                    { term: "Vesicle", def: "Membrane sac for transport." },
+                    { term: "Cytoskeleton", def: "Tracks for vesicle movement." }
+                ],
+                keyKnowledge: [
+                    { subhead: "The Path", details: ["Ribosome -> RER (Folding) -> Transport Vesicle -> Golgi (Modification) -> Secretory Vesicle -> Plasma Membrane (Fusion)."] },
+                    { subhead: "Energy", details: ["Mitochondria provide ATP for motor proteins moving vesicles."] }
+                ],
+                vceWebTricks: ["RER ribosomes = Secretion. Free ribosomes = Cytosolic use.", "Golgi 'modifies and packages'."],
+                questions: [
+                    { q: "Trace the path of a secreted protein. [4 marks]", hint: "Ribosome -> RER -> Golgi -> Vesicle -> Plasma Membrane." },
+                    { q: "Role of Golgi Apparatus? [2 marks]", hint: "Modifies proteins and packages them into vesicles." },
+                    { q: "Energy source for exocytosis? [1 mark]", hint: "ATP (Mitochondria)." },
+                    { q: "Function of RER? [2 marks]", hint: "Folding polypeptides and transport to Golgi." },
+                    { q: "How do vesicles move? [1 mark]", hint: "Motor proteins on cytoskeleton." }
+                ]
+            },
+            5: {
+                title: "Enzymes & Inhibition",
+                aos: "Unit 3 AOS 1",
+                jacarandaDeepDive: "Chapter 5: Biocatalysts.",
+                glossary: [
+                    { term: "Active Site", def: "Region complementary to substrate." },
+                    { term: "Induced Fit", def: "Active site changes shape to bind substrate." },
+                    { term: "Allosteric", def: "Site other than active site." },
+                    { term: "Competitive", def: "Inhibitor binds active site." },
+                    { term: "Non-competitive", def: "Inhibitor binds allosteric site." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Mechanism", details: ["Enzymes lower Activation Energy (Ea).", "Induced Fit: Shape change stresses bonds."] },
+                    { subhead: "Inhibition", details: ["Competitive: Overcome by substrate.", "Non-competitive: Cannot be overcome (Vmax lowered)."] }
+                ],
+                vceWebTricks: ["Enzymes don't change Delta G.", "Denaturation is irreversible."],
+                questions: [
+                    { q: "Explain 'induced fit'. [2 marks]", hint: "Active site molds around substrate for tight fit." },
+                    { q: "Contrast competitive/non-competitive. [3 marks]", hint: "Binding site difference; effect of substrate conc." },
+                    { q: "Effect of heat on enzymes? [2 marks]", hint: "High KE -> Denaturation (bond breakage)." },
+                    { q: "Define Activation Energy. [1 mark]", hint: "Energy needed to start reaction." },
+                    { q: "What is saturation? [1 mark]", hint: "All active sites occupied." }
+                ]
+            },
+            6: {
+                title: "Cycling Coenzymes",
+                aos: "Unit 3 AOS 1",
+                jacarandaDeepDive: "Chapter 5.2: ATP/NAD/NADP.",
+                glossary: [
+                    { term: "Coenzyme", def: "Organic carrier of energy/protons." },
+                    { term: "Loaded", def: "Carrying energy (ATP, NADH)." },
+                    { term: "Unloaded", def: "Empty (ADP, NAD+)." },
+                    { term: "ATP", def: "Adenosine Triphosphate." },
+                    { term: "NADPH", def: "Electron carrier in photosynthesis." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Cycling", details: ["ATP <-> ADP + Pi (Energy).", "NAD+ <-> NADH (Respiration).", "NADP+ <-> NADPH (Photosynthesis)."] }
+                ],
+                vceWebTricks: ["NADPH has a P for Photosynthesis.", "Coenzymes are recycled."],
+                questions: [
+                    { q: "Distinguish NAD+ and NADH. [2 marks]", hint: "Unloaded vs Loaded electron carrier." },
+                    { q: "Role of coenzymes? [1 mark]", hint: "Assist enzymes by carrying groups/energy." },
+                    { q: "Which coenzyme is used in chloroplasts? [1 mark]", hint: "NADP+." },
+                    { q: "How is ATP regenerated? [2 marks]", hint: "Phosphorylation of ADP (ADP+Pi)." },
+                    { q: "Is ATP hydrolysis catabolic? [1 mark]", hint: "Yes, releases energy." }
+                ]
+            },
+            7: {
+                title: "Photosynthesis: Light Dependent",
+                aos: "Unit 3 AOS 2",
+                jacarandaDeepDive: "Chapter 6: Thylakoid reactions.",
+                glossary: [
+                    { term: "Photolysis", def: "Splitting water with light." },
+                    { term: "Thylakoid", def: "Membrane site of LD stage." },
+                    { term: "Chlorophyll", def: "Pigment absorbing light." },
+                    { term: "Granum", def: "Stack of thylakoids." },
+                    { term: "ETC", def: "Electron Transport Chain." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Process", details: ["Light excites electrons -> ETC -> H+ gradient -> ATP.", "Water split -> O2 + H+ + e-."] },
+                    { subhead: "Outputs", details: ["ATP, NADPH, O2."] }
+                ],
+                vceWebTricks: ["O2 comes from water.", "ATP/NADPH go to stroma."],
+                questions: [
+                    { q: "Location of LD stage? [1 mark]", hint: "Grana/Thylakoids." },
+                    { q: "Define photolysis. [2 marks]", hint: "Light splitting water into H+, e-, O2." },
+                    { q: "Role of NADPH? [1 mark]", hint: "Carry H+/electrons to Calvin Cycle." },
+                    { q: "Outputs of this stage? [3 marks]", hint: "O2, ATP, NADPH." },
+                    { q: "What happens to the O2? [1 mark]", hint: "Released via stomata." }
+                ]
+            },
+            8: {
+                title: "Photosynthesis: Light Independent",
+                aos: "Unit 3 AOS 2",
+                jacarandaDeepDive: "Chapter 6: Calvin Cycle.",
+                glossary: [
+                    { term: "Stroma", def: "Site of Calvin Cycle." },
+                    { term: "Carbon Fixation", def: "Inorganic CO2 to organic molecule." },
+                    { term: "Rubisco", def: "Enzyme fixing CO2." },
+                    { term: "RuBP", def: "5-carbon acceptor molecule." },
+                    { term: "G3P", def: "3-carbon sugar output." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Cycle", details: ["Carbon Fixation (Rubisco). Reduction (ATP/NADPH). Regeneration (ATP)."] },
+                    { subhead: "Outputs", details: ["Glucose (from G3P), ADP, NADP+."] }
+                ],
+                vceWebTricks: ["Stops in dark due to lack of ATP/NADPH from stage 1."],
+                questions: [
+                    { q: "Role of Rubisco? [2 marks]", hint: "Catalyses fixation of CO2 to RuBP." },
+                    { q: "Inputs required from LD stage? [2 marks]", hint: "ATP, NADPH." },
+                    { q: "Location of Calvin Cycle? [1 mark]", hint: "Stroma." },
+                    { q: "Final product? [1 mark]", hint: "Glucose (C6H12O6)." },
+                    { q: "Why is it called 'Carbon Fixation'? [2 marks]", hint: "Converting gas (CO2) to solid/organic form." }
+                ]
+            },
+            9: {
+                title: "C3, C4, CAM Adaptations",
+                aos: "Unit 3 AOS 2",
+                jacarandaDeepDive: "Chapter 7: Photorespiration.",
+                glossary: [
+                    { term: "Photorespiration", def: "Rubisco binds O2 instead of CO2." },
+                    { term: "PEP Carboxylase", def: "Enzyme with no O2 affinity." },
+                    { term: "Bundle Sheath", def: "Site of Calvin cycle in C4." },
+                    { term: "Mesophyll", def: "Site of initial fixation." },
+                    { term: "Malate", def: "4-carbon storage molecule." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Strategies", details: ["C4: Spatial (Bundle Sheath). CAM: Temporal (Night)."] },
+                    { subhead: "Problem", details: ["Rubisco binds O2 when hot/dry (stomata closed)."] }
+                ],
+                vceWebTricks: ["C4 = Space (Corn); CAM = Time (Cactus)."],
+                questions: [
+                    { q: "Why is photorespiration bad? [2 marks]", hint: "Wastes ATP, produces no glucose." },
+                    { q: "How do C4 plants avoid it? [2 marks]", hint: "Move CO2 to bundle sheath cells." },
+                    { q: "How do CAM plants save water? [2 marks]", hint: "Open stomata only at night." },
+                    { q: "Role of PEP Carboxylase? [1 mark]", hint: "Initial fixation (ignores O2)." },
+                    { q: "Environment for CAM plants? [1 mark]", hint: "Hot/Arid." }
+                ]
+            },
+            10: {
+                title: "Factors of Photosynthesis",
+                aos: "Unit 3 AOS 2",
+                jacarandaDeepDive: "Chapter 8: Limiting factors.",
+                glossary: [
+                    { term: "Limiting Factor", def: "Scarce resource restricting rate." },
+                    { term: "Saturation Point", def: "Max rate plateau." },
+                    { term: "Optimum Temp", def: "Max enzyme efficiency." },
+                    { term: "Denaturation", def: "Loss of enzyme shape." },
+                    { term: "Light Intensity", def: "Energy available for photolysis." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Factors", details: ["Light (LD stage), CO2 (Calvin), Temp (Enzymes)."] }
+                ],
+                vceWebTricks: ["High temp denatures Rubisco.", "Plateau means another factor is limiting."],
+                questions: [
+                    { q: "Effect of temp on rate? [3 marks]", hint: "Increase KE -> Optimum -> Denaturation." },
+                    { q: "Why does rate plateau with high light? [2 marks]", hint: "CO2 or Temp becomes limiting." },
+                    { q: "Role of water availability? [2 marks]", hint: "Stomata close -> CO2 drops." },
+                    { q: "Define limiting factor. [1 mark]", hint: "Factor in shortest supply." },
+                    { q: "Greenhouse strategy? [1 mark]", hint: "Increase CO2/Temp artificially." }
+                ]
+            },
+            11: {
+                title: "Glycolysis",
+                aos: "Unit 3 AOS 2",
+                jacarandaDeepDive: "Chapter 9: Glucose breakdown.",
+                glossary: [
+                    { term: "Glycolysis", def: "Glucose -> 2 Pyruvate." },
+                    { term: "Cytosol", def: "Site of reaction." },
+                    { term: "Anaerobic", def: "Without oxygen." },
+                    { term: "Net Yield", def: "Total produced minus invested." },
+                    { term: "NADH", def: "Loaded electron carrier." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Details", details: ["In: Glucose, 2ADP, 2NAD+. Out: 2 Pyruvate, 2 ATP, 2 NADH."] }
+                ],
+                vceWebTricks: ["Anaerobic.", "Occurs in ALL cells."],
+                questions: [
+                    { q: "Where does glycolysis occur? [1 mark]", hint: "Cytosol." },
+                    { q: "Net ATP yield? [1 mark]", hint: "2 ATP." },
+                    { q: "Is Oxygen used? [1 mark]", hint: "No." },
+                    { q: "End product carbon count? [1 mark]", hint: "Pyruvate (3 carbons)." },
+                    { q: "Fate of NADH? [1 mark]", hint: "Goes to ETC (aerobic) or Fermentation." }
+                ]
+            },
+            12: {
+                title: "Mitochondrial Respiration",
+                aos: "Unit 3 AOS 2",
+                jacarandaDeepDive: "Chapter 10: Krebs & ETC.",
+                glossary: [
+                    { term: "Matrix", def: "Krebs site." },
+                    { term: "Cristae", def: "ETC site." },
+                    { term: "Link Reaction", def: "Pyruvate -> Acetyl-CoA." },
+                    { term: "FADH2", def: "Krebs-specific carrier." },
+                    { term: "Final Acceptor", def: "Oxygen." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Yields", details: ["Krebs: 2 ATP, CO2, NADH/FADH2. ETC: 26-28 ATP, H2O."] }
+                ],
+                vceWebTricks: ["O2 is final electron acceptor.", "Total yield ~30-32 ATP."],
+                questions: [
+                    { q: "Role of O2 in respiration? [2 marks]", hint: "Accepts electrons/H+ to form water." },
+                    { q: "Location of ETC? [1 mark]", hint: "Inner membrane (Cristae)." },
+                    { q: "Inputs of Krebs? [2 marks]", hint: "Acetyl-CoA, NAD+, FAD, ADP." },
+                    { q: "Total ATP yield? [1 mark]", hint: "30 or 32." },
+                    { q: "Purpose of NADH/FADH2? [2 marks]", hint: "Carry electrons to ETC." }
+                ]
+            },
+            13: {
+                title: "Anaerobic Fermentation",
+                aos: "Unit 3 AOS 2",
+                jacarandaDeepDive: "Chapter 11: No Oxygen.",
+                glossary: [
+                    { term: "Lactic Acid", def: "Animal product." },
+                    { term: "Ethanol", def: "Yeast product." },
+                    { term: "NAD+ Regeneration", def: "Goal of fermentation." },
+                    { term: "Anaerobic", def: "Without oxygen." },
+                    { term: "Cytosol", def: "Location." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Goal", details: ["Recycle NAD+ to keep glycolysis going."] }
+                ],
+                vceWebTricks: ["Produces NO extra ATP."],
+                questions: [
+                    { q: "Purpose of fermentation? [2 marks]", hint: "Regenerate NAD+." },
+                    { q: "Products in yeast? [2 marks]", hint: "Ethanol and CO2." },
+                    { q: "Products in animals? [1 mark]", hint: "Lactic Acid." },
+                    { q: "Site of fermentation? [1 mark]", hint: "Cytosol." },
+                    { q: "Comparison of ATP yield to aerobic? [2 marks]", hint: "2 vs 30-32 (Much less)." }
+                ]
+            },
+            14: {
+                title: "Biofuels",
+                aos: "Unit 3 AOS 2",
+                jacarandaDeepDive: "Chapter 12: Biomass energy.",
+                glossary: [
+                    { term: "Bioethanol", def: "Fuel from fermentation." },
+                    { term: "Carbon Neutral", def: "Net zero carbon release." },
+                    { term: "Biomass", def: "Organic material source." },
+                    { term: "Hydrolysis", def: "Breaking down cellulose." },
+                    { term: "First Generation", def: "Food crops source." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Production", details: ["Deconstruction -> Enzymatic Digestion -> Fermentation -> Purification."] }
+                ],
+                vceWebTricks: ["CO2 released was recently absorbed (short cycle)."],
+                questions: [
+                    { q: "Define carbon neutral. [2 marks]", hint: "CO2 emitted = CO2 absorbed during growth." },
+                    { q: "Steps to make bioethanol? [3 marks]", hint: "Breakdown, Hydrolysis, Fermentation, Distillation." },
+                    { q: "Role of yeast? [1 mark]", hint: "Anaerobic fermentation." },
+                    { q: "One advantage? [1 mark]", hint: "Renewable / Reduced fossil fuel use." },
+                    { q: "One disadvantage? [1 mark]", hint: "Food vs Fuel land use." }
+                ]
+            },
+            15: {
+                title: "CRISPR-Cas9 Fundamentals",
+                aos: "Unit 4 AOS 1",
+                jacarandaDeepDive: "Chapter 13: Gene Editing",
+                glossary: [
+                    { term: "Cas9", def: "Endonuclease enzyme." },
+                    { term: "sgRNA", def: "Guide RNA complementary to target." },
+                    { term: "PAM", def: "Binding site (NGG)." },
+                    { term: "Spacer", def: "Viral DNA stored in bacteria." },
+                    { term: "Knockout", def: "Silencing a gene." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Mechanism", details: ["sgRNA guides Cas9 -> PAM recognition -> Double Strand Break -> Repair mutation."] }
+                ],
+                vceWebTricks: ["PAM is on target DNA, not RNA.", "Cas9 is the scissors."],
+                questions: [
+                    { q: "Role of sgRNA? [2 marks]", hint: "Directs Cas9 to specific DNA sequence." },
+                    { q: "What is PAM? [1 mark]", hint: "NGG sequence required for binding." },
+                    { q: "Natural function? [1 mark]", hint: "Bacterial immune system." },
+                    { q: "Result of NHEJ repair? [1 mark]", hint: "Mutation/Knockout." },
+                    { q: "Advantage over restriction enzymes? [1 mark]", hint: "Programmable specificity." }
+                ]
+            },
+            16: {
+                title: "PCR & Gel Electrophoresis",
+                aos: "Unit 4 AOS 1",
+                jacarandaDeepDive: "Chapter 13: DNA Tools",
+                glossary: [
+                    { term: "Denaturation", def: "95C, separates strands." },
+                    { term: "Annealing", def: "55C, primers bind." },
+                    { term: "Extension", def: "72C, Taq polymerase builds." },
+                    { term: "Taq", def: "Heat-stable polymerase." },
+                    { term: "Standard", def: "Ladder of known sizes." }
+                ],
+                keyKnowledge: [
+                    { subhead: "PCR Steps", details: ["Denature -> Anneal -> Extend. Doubles DNA each cycle."] },
+                    { subhead: "Gel Logic", details: ["DNA negative -> Moves to positive. Small moves fast."] }
+                ],
+                vceWebTricks: ["Primers are DNA, not RNA.", "Load at negative end."],
+                questions: [
+                    { q: "PCR temperatures? [3 marks]", hint: "95, 55, 72." },
+                    { q: "Why use Taq? [1 mark]", hint: "Withstands 95C." },
+                    { q: "Charge of DNA? [1 mark]", hint: "Negative." },
+                    { q: "Which fragments travel furthest? [1 mark]", hint: "Smallest." },
+                    { q: "Purpose of primers? [1 mark]", hint: "Start site for polymerase." }
+                ]
+            },
+            17: {
+                title: "Recombinant Plasmids",
+                aos: "Unit 4 AOS 1",
+                jacarandaDeepDive: "Chapter 14: Transformation",
+                glossary: [
+                    { term: "Plasmid", def: "Circular bacterial DNA." },
+                    { term: "Ligase", def: "Joins backbone." },
+                    { term: "Restriction Enzyme", def: "Cuts DNA at specific site." },
+                    { term: "Sticky End", def: "Overhanging bases." },
+                    { term: "Heat Shock", def: "Method to insert plasmid." }
+                ],
+                keyKnowledge: [
+                    { subhead: "Steps", details: ["Cut vector/gene with same enzyme. Ligate. Transform. Select (Antibiotic)."] }
+                ],
+                vceWebTricks: ["Use same enzyme for complementary ends."],
+                questions: [
+                    { q: "Role of Ligase? [1 mark]", hint: "Joins phosphodiester bonds." },
+                    { q: "Why use same restriction enzyme? [1 mark]", hint: "Create complementary sticky ends." },
+                    { q: "How to screen transformed bacteria? [2 marks]", hint: "Antibiotic resistance gene." },
+                    { q: "What is a vector? [1 mark]", hint: "Carrier of DNA (plasmid)." },
+                    { q: "Define transformation. [1 mark]", hint: "Uptake of foreign DNA." }
+                ]
+            },
+            18: {
+                title: "Pathogens & Disease",
+                aos: "Unit 4 AOS 1",
+                jacarandaDeepDive: "Chapter 12: Agents of disease.",
+                glossary: [
+                    { term: "Prion", def: "Misfolded infectious protein." },
+                    { term: "Antigenic Drift", def: "Small mutations in viral surface proteins." },
+                    { term: "Virus", def: "Non-cellular genetic material in capsid." },
+                    { term: "Bacteria", def: "Cellular prokaryote." },
+                    { term: "Vector", def: "Carrier of disease (e.g. mosquito)." }
+                ],
+                keyKnowledge: [{ subhead: "Types of Pathogens", details: ["Cellular: Bacteria, Fungi, Parasites.", "Non-cellular: Viruses, Prions."] }],
+                vceWebTricks: ["Viruses are non-cellular because they lack independent metabolism."],
+                questions: [
+                    { q: "How do prions cause disease? [2 marks]", hint: "Induce normal proteins to misfold." },
+                    { q: "Difference between bacteria and virus? [2 marks]", hint: "Cellular vs Non-cellular." },
+                    { q: "Define pathogen. [1 mark]", hint: "Disease causing agent." },
+                    { q: "What is an allergen? [1 mark]", hint: "Non-pathogenic antigen triggering response." },
+                    { q: "Example of fungal disease? [1 mark]", hint: "Tinea/Thrush." }
+                ]
+            },
+            19: {
+                title: "Innate Immunity: First Line",
+                aos: "Unit 4 AOS 1",
+                jacarandaDeepDive: "Chapter 13: Barriers",
+                glossary: [
+                    { term: "Lysozyme", def: "Enzyme in tears/saliva that kills bacteria." },
+                    { term: "Stomata", def: "Opening in plants protected by closing mechanisms." },
+                    { term: "Microbiota", def: "Good bacteria." },
+                    { term: "Intact Skin", def: "Physical barrier." },
+                    { term: "Galls", def: "Plant tissue walling off infection." }
+                ],
+                keyKnowledge: [{ subhead: "Barriers", details: ["Physical: Skin, Bark.", "Chemical: Acid, Lysozymes.", "Microbiological: Normal flora."] }],
+                vceWebTricks: ["Normal flora compete for space and nutrients."] ,
+                questions: [
+                    { q: "How does mucus act as a barrier? [2 marks]", hint: "Traps pathogens chemically and physically." },
+                    { q: "Physical barrier in plants? [1 mark]", hint: "Waxy cuticle." },
+                    { q: "Chemical barrier in humans? [1 mark]", hint: "Stomach acid." },
+                    { q: "Role of flora? [1 mark]", hint: "Competition." },
+                    { q: "Define innate. [1 mark]", hint: "Non-specific, no memory." }
+                ]
+            },
+            20: {
+                title: "Innate Immunity: Second Line",
+                aos: "Unit 4 AOS 1",
+                jacarandaDeepDive: "Chapter 14: The Non-Specific Response",
+                glossary: [
+                    { term: "Neutrophil", def: "Fastest responding phagocyte." },
+                    { term: "Complement", def: "Proteins that opsonise or lyse bacteria." },
+                    { term: "Macrophage", def: "APC Phagocyte." },
+                    { term: "Interferon", def: "Viral warning signal." },
+                    { term: "Histamine", def: "Vasodilator." }
+                ],
+                keyKnowledge: [{ subhead: "Inflammation", details: ["Mast cells release Histamine.", "Increased permeability and vasodilation."] }],
+                vceWebTricks: ["Inflammation is a non-specific response."] ,
+                questions: [
+                    { q: "Role of Mast cells? [2 marks]", hint: "Release histamine to trigger inflammation." },
+                    { q: "Three complement functions? [3 marks]", hint: "Lysis, Opsonisation, Chemotaxis." },
+                    { q: "Role of NK cells? [1 mark]", hint: "Apoptosis of viral/cancer cells." },
+                    { q: "Define Phagocytosis. [1 mark]", hint: "Engulf and digest." },
+                    { q: "What does Histamine do? [2 marks]", hint: "Vasodilation, Permeability." }
+                ]
+            },
+            21: {
+                title: "Adaptive Immunity: B Cells",
+                aos: "Unit 4 AOS 1",
+                jacarandaDeepDive: "Chapter 15: Humoral Immunity",
+                glossary: [
+                    { term: "Plasma Cell", def: "B cell derivative that secretes antibodies." },
+                    { term: "Opsonisation", def: "Tagging a pathogen for phagocytosis." },
+                    { term: "Clonal Selection", def: "Antigen binds specific receptor." },
+                    { term: "Memory Cell", def: "Long term immunity." },
+                    { term: "Antibody", def: "Protein that binds antigen." }
+                ],
+                keyKnowledge: [{ subhead: "B Cell Pathway", details: ["Clonal selection -> Clonal expansion -> Plasma + Memory cells."] }],
+                vceWebTricks: ["Antibodies do not kill; they neutralise and tag."] ,
+                questions: [
+                    { q: "Define clonal selection. [2 marks]", hint: "Antigen binds to specific B cell receptor." },
+                    { q: "Role of Plasma cells? [1 mark]", hint: "Secrete antibodies." },
+                    { q: "How do antibodies help? [2 marks]", hint: "Agglutination, Neutralisation." },
+                    { q: "Target of Humoral? [1 mark]", hint: "Extracellular pathogens." },
+                    { q: "Role of T-Helper? [1 mark]", hint: "Activate B cells." }
+                ]
+            },
+            22: {
+                title: "Adaptive Immunity: T Cells",
+                aos: "Unit 4 AOS 1",
+                jacarandaDeepDive: "Chapter 16: Cell-Mediated Immunity",
+                glossary: [
+                    { term: "Cytotoxic T (Tc)", def: "Kills infected/cancerous cells directly." },
+                    { term: "Helper T (Th)", def: "Coordinates the immune response via cytokines." },
+                    { term: "MHC I", def: "Self marker on all nucleated cells." },
+                    { term: "MHC II", def: "Marker on APCs." },
+                    { term: "Apoptosis", def: "Programmed cell death." }
+                ],
+                keyKnowledge: [{ subhead: "Mechanism", details: ["Tc cells release perforins and granzymes to induce apoptosis."] }],
+                vceWebTricks: ["Apoptosis is 'programmed cell death'."] ,
+                questions: [
+                    { q: "What is the role of Helper T cells? [2 marks]", hint: "Releasing cytokines to activate B and Tc cells." },
+                    { q: "How do Tc cells kill? [2 marks]", hint: "Perforin/Granzymes -> Apoptosis." },
+                    { q: "Target of Cell-Mediated? [1 mark]", hint: "Intracellular (Viruses/Cancer)." },
+                    { q: "Where do T cells mature? [1 mark]", hint: "Thymus." },
+                    { q: "Role of Dendritic cells? [1 mark]", hint: "Present antigen to T cells." }
+                ]
+            },
+            23: {
+                title: "Immunity Types & Vaccines",
+                aos: "Unit 4 AOS 1",
+                jacarandaDeepDive: "Chapter 17: Acquired Resistance",
+                glossary: [
+                    { term: "Active Immunity", def: "Body produces its own antibodies/memory." },
+                    { term: "Passive Immunity", def: "External antibodies provided (e.g. Breastmilk)." },
+                    { term: "Herd Immunity", def: "High % immune protects vulnerable." },
+                    { term: "Natural", def: "No medical intervention." },
+                    { term: "Artificial", def: "Medical intervention." }
+                ],
+                keyKnowledge: [{ subhead: "Vaccines", details: ["Artificial active immunity: Provides weakened/dead antigen to build memory."] }],
+                vceWebTricks: ["Memory cells provide the rapid response upon re-exposure."] ,
+                questions: [
+                    { q: "Difference between natural and artificial passive immunity? [2 marks]", hint: "Breastmilk vs Antivenom." },
+                    { q: "Why use a booster? [1 mark]", hint: "Increase memory cells." },
+                    { q: "Explain Herd Immunity. [2 marks]", hint: "Protect vulnerable via high population immunity." },
+                    { q: "Duration of Passive immunity? [1 mark]", hint: "Short (no memory)." },
+                    { q: "Example of Natural Active? [1 mark]", hint: "Catching a cold." }
+                ]
+            },
+            24: {
+                title: "Lymphatic System",
+                aos: "Unit 4 AOS 1",
+                jacarandaDeepDive: "Chapter 16: Surveillance",
+                glossary: [
+                    { term: "Lymph Node", def: "Site of clonal selection." },
+                    { term: "Primary Tissue", def: "Bone Marrow/Thymus (Maturation)." },
+                    { term: "Secondary Tissue", def: "Nodes/Spleen (Activation)." },
+                    { term: "Lymph", def: "Fluid carrying immune cells." },
+                    { term: "Valves", def: "Prevent backflow." }
+                ],
+                keyKnowledge: [{ subhead: "Function", details: ["Drainage, Transport, Surveillance."] }],
+                vceWebTricks: ["Swollen nodes = B/T cell proliferation."],
+                questions: [
+                    { q: "Role of lymph nodes? [2 marks]", hint: "Filter lymph, site of APC presentation." },
+                    { q: "Primary vs Secondary tissue? [2 marks]", hint: "Maturation vs Activation." },
+                    { q: "How is lymph moved? [1 mark]", hint: "Muscle contraction/valves." },
+                    { q: "Where do B cells mature? [1 mark]", hint: "Bone Marrow." },
+                    { q: "Role of Spleen? [1 mark]", hint: "Filters blood." }
+                ]
+            },
+            25: {
+                title: "Monoclonal Antibodies",
+                aos: "Unit 4 AOS 1",
+                jacarandaDeepDive: "Chapter 18: Immunotherapy",
+                glossary: [
+                    { term: "Hybridoma", def: "B-cell fused with tumour cell." },
+                    { term: "mAbs", def: "Cloned antibodies for one antigen." },
+                    { term: "Conjugated", def: "mAb attached to drug/toxin." },
+                    { term: "Autoimmune", def: "Immune system attacks self." },
+                    { term: "Bispecific", def: "mAb binding two targets." }
+                ],
+                keyKnowledge: [{ subhead: "Cancer", details: ["Flagging for immune system, Delivering toxins, Blocking growth signals."] }],
+                vceWebTricks: ["Specific to ONE antigen.", "Artificial Passive treatment."],
+                questions: [
+                    { q: "How are hybridomas made? [2 marks]", hint: "Fuse B-cell with Myeloma." },
+                    { q: "Mechanism against cancer? [2 marks]", hint: "Flagging or Blocking receptors." },
+                    { q: "Why use mAbs? [1 mark]", hint: "Highly specific / less side effects." },
+                    { q: "Use in autoimmune disease? [1 mark]", hint: "Target cytokines." },
+                    { q: "Why 'monoclonal'? [1 mark]", hint: "From single clone." }
+                ]
+            },
+            26: {
+                title: "Natural Selection",
+                aos: "Unit 4 AOS 2",
+                jacarandaDeepDive: "Chapter 18: Survival of the Fittest",
+                glossary: [
+                    { term: "Selection Pressure", def: "Environmental factor affecting survival." },
+                    { term: "Fitness", def: "Ability to survive and reproduce." },
+                    { term: "Gene Pool", def: "Sum of alleles." },
+                    { term: "Variation", def: "Genetic differences." },
+                    { term: "Allele Frequency", def: "Proportion of an allele." }
+                ],
+                keyKnowledge: [{ subhead: "Steps", details: ["Variation -> Selection Pressure -> Survival -> Inheritance."] }],
+                vceWebTricks: ["Variation must exist BEFORE the selection pressure."] ,
+                questions: [
+                    { q: "How does antibiotic resistance occur? [4 marks]", hint: "Variation, Pressure, Survival, Frequency increases." },
+                    { q: "Define gene pool. [1 mark]", hint: "All alleles in population." },
+                    { q: "Source of new variation? [1 mark]", hint: "Mutation." },
+                    { q: "What acts on phenotype? [1 mark]", hint: "Selection pressure." },
+                    { q: "Result of selection? [1 mark]", hint: "Change in allele frequency." }
+                ]
+            },
+            27: {
+                title: "Genetic Drift & Gene Flow",
+                aos: "Unit 4 AOS 2",
+                jacarandaDeepDive: "Chapter 19: Changing Allele Frequencies",
+                glossary: [
+                    { term: "Bottleneck", def: "Random event drastically reducing population size." },
+                    { term: "Founder Effect", def: "Small group starts a new isolated population." },
+                    { term: "Gene Flow", def: "Migration between populations." },
+                    { term: "Genetic Drift", def: "Random change in alleles." },
+                    { term: "Immigration", def: "Entering a population." }
+                ],
+                keyKnowledge: [{ subhead: "Drift vs Flow", details: ["Drift: Random/Chance (Small populations).", "Flow: Migration/Interbreeding."] }],
+                vceWebTricks: ["Genetic drift decreases genetic diversity."] ,
+                questions: [
+                    { q: "Define the Founder Effect. [2 marks]", hint: "Small group isolates with unrepresentative alleles." },
+                    { q: "Effect of bottleneck? [2 marks]", hint: "Loss of diversity, increased drift." },
+                    { q: "Compare flow and drift. [2 marks]", hint: "Migration vs Chance." },
+                    { q: "Impact on small populations? [1 mark]", hint: "Drift is stronger." },
+                    { q: "Does gene flow increase diversity? [1 mark]", hint: "Yes." }
+                ]
+            },
+            28: {
+                title: "Speciation: Allopatric vs Sympatric",
+                aos: "Unit 4 AOS 2",
+                jacarandaDeepDive: "Chapter 20: New Species",
+                glossary: [
+                    { term: "Allopatric", def: "Speciation due to a physical barrier." },
+                    { term: "Sympatric", def: "Speciation in the same geographic area." },
+                    { term: "Reproductive Isolation", def: "Cannot interbreed." },
+                    { term: "Geographic Barrier", def: "Physical separation." },
+                    { term: "Species", def: "Can breed fertile offspring." }
+                ],
+                keyKnowledge: [{ subhead: "Allopatric Steps", details: ["Isolation -> Mutations -> Selection Pressures -> Reproductive Isolation."] }],
+                vceWebTricks: ["Galapagos Finches are the classic VCE example."] ,
+                questions: [
+                    { q: "Define reproductive isolation. [1 mark]", hint: "Groups can no longer produce fertile offspring." },
+                    { q: "Steps of Allopatric? [4 marks]", hint: "Barrier, Isolation, Selection, Speciation." },
+                    { q: "Example of Sympatric? [1 mark]", hint: "Lord Howe Palms." },
+                    { q: "Role of barrier? [1 mark]", hint: "Prevent gene flow." },
+                    { q: "Definition of species? [1 mark]", hint: "Viable fertile offspring." }
+                ]
+            },
+            29: {
+                title: "Fossils & Dating Techniques",
+                aos: "Unit 4 AOS 2",
+                jacarandaDeepDive: "Chapter 22: Deep Time",
+                glossary: [
+                    { term: "Absolute Dating", def: "Radiometric dating (e.g. Carbon-14)." },
+                    { term: "Relative Dating", def: "Stratigraphy and index fossils." },
+                    { term: "Index Fossil", def: "Widespread, short-lived." },
+                    { term: "Half-life", def: "Time for 50% decay." },
+                    { term: "Transitional Fossil", def: "Intermediate traits." }
+                ],
+                keyKnowledge: [{ subhead: "Fossilisation", details: ["Requires: Rapid burial, Low oxygen, Lack of scavengers."] }],
+                vceWebTricks: ["Carbon-14 is only for organic material under 50,000 years old."] ,
+                questions: [
+                    { q: "Role of index fossils? [2 marks]", hint: "Correlating ages of rock layers in different areas." },
+                    { q: "Conditions for fossilisation? [3 marks]", hint: "Rapid burial, low O2, pressure." },
+                    { q: "Carbon-14 vs Potassium-Argon? [2 marks]", hint: "Young/Organic vs Old/Volcanic." },
+                    { q: "What is stratigraphy? [1 mark]", hint: "Relative dating by layers." },
+                    { q: "Significance of transitional fossils? [1 mark]", hint: "Show evolutionary links." }
+                ]
+            },
+            30: {
+                title: "Molecular Homology",
+                aos: "Unit 4 AOS 2",
+                jacarandaDeepDive: "Chapter 22: DNA Evidence",
+                glossary: [
+                    { term: "Molecular Clock", def: "Mutation rate estimates time." },
+                    { term: "mtDNA", def: "Maternal lineage DNA." },
+                    { term: "Conservation", def: "Genes that stay same over time." },
+                    { term: "Hybridisation", def: "Melting temp indicates relatedness." },
+                    { term: "Phylogenetic Tree", def: "Evolutionary relationship diagram." }
+                ],
+                keyKnowledge: [{ subhead: "DNA vs Protein", details: ["DNA is more sensitive. Amino acids change slower."] }],
+                vceWebTricks: ["Melting temp: High = Closely related."] ,
+                questions: [
+                    { q: "Why use mtDNA? [2 marks]", hint: "No recombination, high mutation rate." },
+                    { q: "Explain DNA Hybridisation. [2 marks]", hint: "Mix strands, measure melt temp." },
+                    { q: "What does a node represent? [1 mark]", hint: "Common ancestor." },
+                    { q: "Why are proteins less sensitive? [1 mark]", hint: "Degenerate code (silent mutations)." },
+                    { q: "Concept of Molecular Clock? [1 mark]", hint: "Constant mutation rate." }
+                ]
+            },
+            31: {
+                title: "Hominin Evolution: Anatomy",
+                aos: "Unit 4 AOS 2",
+                jacarandaDeepDive: "Chapter 21: The Human Journey",
+                glossary: [
+                    { term: "Bipedalism", def: "Walking on two legs." },
+                    { term: "Cranial Capacity", def: "Volume of the brain case." },
+                    { term: "Foramen Magnum", def: "Spine hole." },
+                    { term: "Hominin", def: "Humans and bipedal ancestors." },
+                    { term: "Hominoid", def: "Apes and Humans." }
+                ],
+                keyKnowledge: [{ subhead: "Trends", details: ["Forward-shifted foramen magnum.", "Reduced brow ridge.", "Precision grip."] }],
+                vceWebTricks: ["Hominin refers to humans and bipedal ancestors."] ,
+                questions: [
+                    { q: "Three bipedal indicators? [3 marks]", hint: "Pelvis shape, S-spine, Foramen magnum location." },
+                    { q: "Trend in brain size? [1 mark]", hint: "Increased." },
+                    { q: "Define Hominin. [1 mark]", hint: "Bipedal ape." },
+                    { q: "Trend in face shape? [1 mark]", hint: "Flatter." },
+                    { q: "Importance of precision grip? [1 mark]", hint: "Tools." }
+                ]
+            },
+            32: {
+                title: "Human Migration & Ethics",
+                aos: "Unit 4 AOS 2 & 3",
+                jacarandaDeepDive: "Chapter 23: Out of Africa",
+                glossary: [
+                    { term: "Out of Africa", def: "Migration theory." },
+                    { term: "Multiregional", def: "Simultaneous evolution." },
+                    { term: "Interbreeding", def: "Mixing with Neanderthals." },
+                    { term: "Bioethics", def: "Moral principles." },
+                    { term: "Cultural Evolution", def: "Knowledge transfer." }
+                ],
+                keyKnowledge: [{ subhead: "Evidence", details: ["Oldest fossils in Africa. Highest genetic diversity in Africa."] }],
+                vceWebTricks: ["Cultural evolution is faster than biological."] ,
+                questions: [
+                    { q: "Evidence for Out of Africa? [2 marks]", hint: "mtDNA diversity and fossil record." },
+                    { q: "Did we interbreed? [1 mark]", hint: "Yes (Neanderthal DNA)." },
+                    { q: "Biological vs Cultural? [2 marks]", hint: "Genes vs Ideas." },
+                    { q: "Bioethical principle of Justice? [1 mark]", hint: "Fairness." },
+                    { q: "Role of fire? [1 mark]", hint: "Cooking/Brain growth." }
+                ]
+            }
+        };
+
+/***** ─────────────────────────────────────────────────────────────────
+          LOCK CONFIG + HELPERS (auto-injected by Copilot)
+        ────────────────────────────────────────────────────────────────── *****/
+
+        // Unique salt for hashing (change this to another long random string if you rotate codes)
+        const SALT = "NbrnTP3fAbnFbmOHnKYaXRvj7uff0LYTH8xIZM1JRcoreogr";
+
+        // One global passcode for all modules (SHA-256 of pass + SALT)
+        const GLOBAL_PASSWORD_HASH = "ec1664db62ef8c88bc839889e9fbe1f833b6e7eaa0f083f4dcf98149de2d80f6"; // pass: VCE-BIO-ACCESS-2026
+
+        // Per-module passcodes map (unused here, but kept for future flexibility)
+        const MODULE_PASSWORD_HASHES = {};
+
+        // Global one-time codes (per device). Enter once on a device, unlocks ALL modules on that device.
+        const VALID_OTP_HASHES = [
+          "5a2c2f7706546117616d73a6e2fd8be1cb31197b4ae24f4de9c2a32d6803d9b3",
+          "1340866574c1d47d80c00c755c5a4a371e3291400493e170eba176cc0a16f923",
+          "c4f3a5a51dd40ebf605e014618cdea297fb626fda50be9afe36fc01b531844e5",
+          "5994ee50ee1efc957e6b650bca270365f6a8b4feabaf6eb42b2ddc582f12abc5",
+          "ca1f9da6307db54de6a5a14c3d3376783ab43cb07efd2774b0b96dd1d00f398b"
+        ]; // plaintext codes: ["WNNH-J7XV","G0FN-9XUY","41IB-LJH7","5LXO-6QJI","UJV6-OH9S"]
+
+        // Storage keys
+        const STORAGE_UNLOCKS   = "vcebio_unlocks_v1";         // { [moduleId]: { ts, via, deviceId } }
+        const STORAGE_DEVICE_ID = "vcebio_device_id_v1";
+        const STORAGE_CONSUMED  = "vcebio_consumed_otps_v1";   // { [otpHash]: true } (per device)
+
+        // Crypto helper (browser)
+        async function sha256Hex(input) {
+          const enc = new TextEncoder();
+          const buf = await crypto.subtle.digest("SHA-256", enc.encode(input));
+          return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+        }
+
+        // Device id (browser-scoped)
+        function getOrCreateDeviceId() {
+          let id = localStorage.getItem(STORAGE_DEVICE_ID);
+          if (!id) {
+            id = crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+            localStorage.setItem(STORAGE_DEVICE_ID, id);
+          }
+          return id;
+        }
+
+        // Persistent maps
+        function getMap(key) {
+          try { return JSON.parse(localStorage.getItem(key) || "{}"); }
+          catch { return {}; }
+        }
+        function setMap(key, obj) {
+          localStorage.setItem(key, JSON.stringify(obj));
+        }
+
+        function isModuleUnlocked(moduleId) {
+          const unlocks = getMap(STORAGE_UNLOCKS);
+          return Boolean(unlocks[moduleId]);
+        }
+
+        function markUnlocked(moduleId, via = "passcode") {
+          const unlocks = getMap(STORAGE_UNLOCKS);
+          unlocks[moduleId] = { ts: Date.now(), via, deviceId: getOrCreateDeviceId() };
+          setMap(STORAGE_UNLOCKS, unlocks);
+        }
+
+        function markUnlockedAll(via = "otp-global") {
+          const ids = Object.keys(SESSIONS_DATA).map(k => parseInt(k));
+          ids.forEach(id => markUnlocked(id, via));
+        }
+
+        async function validatePasscode(moduleId, input) {
+          const modHash = MODULE_PASSWORD_HASHES[moduleId];
+          const expected = modHash || GLOBAL_PASSWORD_HASH || "";
+          if (!expected) return { ok: false, reason: "No passcode configured." };
+          const actual = await sha256Hex((input || "") + SALT);
+          return { ok: actual === expected, reason: actual === expected ? "" : "Incorrect passcode." };
+        }
+
+        async function validateOtpGlobal(input) {
+          if (!VALID_OTP_HASHES || VALID_OTP_HASHES.length === 0) return { ok: false, reason: "No OTPs configured." };
+          const otpHash = await sha256Hex((input || "") + SALT);
+          const consumed = getMap(STORAGE_CONSUMED);
+          if (consumed[otpHash]) return { ok: false, reason: "This OTP was already used on this device." };
+          if (!VALID_OTP_HASHES.includes(otpHash)) return { ok: false, reason: "Invalid OTP." };
+          consumed[otpHash] = true; // consume on this device
+          setMap(STORAGE_CONSUMED, consumed);
+          return { ok: true, reason: "" };
+        }
+
+        function UnlockGate({ moduleId, moduleTitle, onUnlocked }) {
+          const [mode, setMode] = React.useState("passcode"); // "passcode" | "otp"
+          const [value, setValue] = React.useState("");
+          const [busy, setBusy] = React.useState(false);
+          const [error, setError] = React.useState("");
+
+          const submit = async (e) => {
+            e.preventDefault();
+            setBusy(true); setError("");
+            try {
+              let res;
+              if (mode === "passcode") res = await validatePasscode(moduleId, value);
+              else                      res = await validateOtpGlobal(value);
+
+              if (res.ok) {
+                if (mode === "otp") markUnlockedAll("otp-global");
+                else markUnlocked(moduleId, "passcode");
+                onUnlocked?.();
+              } else {
+                setError(res.reason || "Could not unlock.");
+              }
+            } finally {
+              setBusy(false);
+            }
+          };
+
+          const passBtnCls = (mode === "passcode")
+            ? "px-3 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider bg-indigo-600/20 text-indigo-300 border border-indigo-500/20"
+            : "px-3 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider bg-white/5 text-slate-400 border border-white/5";
+
+          const otpBtnCls = (mode === "otp")
+            ? "px-3 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider bg-indigo-600/20 text-indigo-300 border border-indigo-500/20"
+            : "px-3 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider bg-white/5 text-slate-400 border border-white/5";
+
+          return (
+            <div className="max-w-xl mx-auto mt-16 p-8 rounded-3xl bg-white/[0.02] border border-white/5 shadow-2xl">
+              <div className="mb-6">
+                <div className="text-[10px] font-black uppercase text-slate-500 tracking-[0.3em] mb-2">Locked Module</div>
+                <h2 className="text-2xl font-black text-white">{moduleTitle}</h2>
+                <p className="text-slate-400 text-sm mt-2">
+                  Enter a <span className="text-indigo-400 font-bold">Passcode</span> or a <span className="text-indigo-400 font-bold">One‑time Code</span>.
+                  One‑time code unlocks <span className="font-bold">all modules on this device</span>.
+                </p>
+              </div>
+
+              <div className="flex gap-2 mb-5">
+                <button className={passBtnCls} onClick={() => setMode("passcode")} type="button">Passcode</button>
+                <button className={otpBtnCls} onClick={() => setMode("otp")} type="button">One‑time Code</button>
+              </div>
+
+              <form onSubmit={submit} className="space-y-4">
+                <input
+                  autoFocus
+                  type="password"
+                  placeholder={mode === "passcode" ? "Enter global passcode" : "Enter one-time code"}
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                  className="w-full bg-white/[0.06] border border-white/10 rounded-xl px-4 py-3 text-sm text-slate-200 outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/40"
+                />
+                {error && (
+                  <div className="text-[12px] text-rose-400 font-bold">{error}</div>
+                )}
+                <div className="flex items-center justify-between">
+                  <div className="text-[10px] text-slate-500 font-black uppercase tracking-[0.2em]">
+                    Device ID: <span className="text-slate-400">{getOrCreateDeviceId().slice(0, 8)}…</span>
+                  </div>
+                  <button
+                    disabled={busy || !value}
+                    className="px-4 py-2 rounded-xl bg-indigo-600 text-white text-[12px] font-black uppercase tracking-wider hover:bg-indigo-500 disabled:opacity-50"
+                  >{busy ? "Unlocking…" : "Unlock"}</button>
+                </div>
+              </form>
+
+              <div className="mt-5 text-[11px] text-slate-500">
+                <p>After unlocking, access <span className="font-bold">does not expire</span> on this device.</p>
+              </div>
+            </div>
+          );
+        }
+        // --- MAIN APP COMPONENT ---
+        const App = () => {
+            const [current, setCurrent] = React.useState(1);
+            const [activeTab, setActiveTab] = React.useState('knowledge');
+            const [sidebarOpen, setSidebarOpen] = React.useState(true);
+            const [search, setSearch] = React.useState("");
+            const session = SESSIONS_DATA[current];
+            const unlocked = React.useMemo(() => isModuleUnlocked(current), [current]);
+            const [, force] = React.useReducer(x => x + 1, 0);
+            const filtered = React.useMemo(() => {
+                return Object.entries(SESSIONS_DATA).filter(([num, data]) =>
+                    data.title.toLowerCase().includes(search.toLowerCase())
+                );
+            }, [search]);
+
+            return (
+                <div className="flex h-screen bg-[#020203] text-slate-100 overflow-hidden font-sans selection:bg-indigo-500/30">
+                    {/* SIDEBAR */}
+                    <aside className={`${sidebarOpen ? 'w-80' : 'w-0'} bg-[#08080a] border-r border-white/5 transition-all duration-300 flex flex-col overflow-hidden shadow-2xl z-20`}>
+                        <div className="p-6 border-b border-white/5 bg-indigo-600/5">
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="bg-indigo-500 p-1.5 rounded-lg shadow-lg shadow-indigo-500/20">
+                                    <GraduationCap className="text-white w-5 h-5" />
+                                </div>
+                                <h2 className="font-bold text-sm tracking-widest text-indigo-100 uppercase">VCE Bio Master</h2>
+                            </div>
+                            <div className="relative">
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                                <input
+                                    type="text"
+                                    placeholder="Search 32 modules..."
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 pl-10 text-[11px] focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/20 outline-none transition-all placeholder:text-slate-600"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex-1 overflow-y-auto p-4 space-y-1.5 custom-scrollbar">
+                            {filtered.map(([num, data]) => (
+                                <button
+                                    key={num}
+                                    onClick={() => {setCurrent(parseInt(num)); setActiveTab('knowledge');}}
+                                    className={`w-full text-left px-4 py-3.5 rounded-xl transition-all flex items-center gap-4 group ${
+                                        current === parseInt(num)
+                                        ? 'bg-indigo-600/10 border border-indigo-500/20 text-white shadow-xl shadow-indigo-500/5'
+                                        : 'text-slate-500 hover:bg-white/5 hover:text-slate-300 border border-transparent'
+                                    }`}
+                                >
+                                    <span className={`text-[10px] font-black w-7 h-7 flex items-center justify-center rounded-lg transition-colors ${current === parseInt(num) ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/30' : 'bg-white/5 group-hover:bg-white/10'}`}>{num}</span>
+                                    <div className="flex flex-col overflow-hidden">
+                                        <span className="text-[11px] font-bold truncate leading-tight">{data.title}</span>
+                                        <span className="text-[9px] opacity-50 font-medium uppercase">{data.aos}</span>
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+                    </aside>
+
+                    {/* MAIN CONTENT */}
+                    <main className="flex-1 flex flex-col min-w-0 bg-[radial-gradient(circle_at_top_right,#0c0c20,transparent)] overflow-hidden">
+                        <header className="h-16 border-b border-white/5 px-8 flex items-center justify-between bg-[#030305]/80 backdrop-blur-xl sticky top-0 z-10">
+                            <div className="flex items-center gap-6">
+                                <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 hover:bg-white/5 rounded-xl text-slate-400 transition-colors">
+                                    <Layers className="w-5 h-5" />
+                                </button>
+                                <div className="flex flex-col">
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">{session.aos}</span>
+                                        <span className="w-1 h-1 rounded-full bg-white/10" />
+                                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Module {current}</span>
+                                    </div>
+                                    <h3 className="text-xs font-bold text-slate-300">High-Density Study Program</h3>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center gap-6">
+                                <div className="hidden md:flex flex-col items-end">
+                                    <span className="text-[9px] font-black text-slate-600 uppercase tracking-tighter">Study Progress</span>
+                                    <div className="flex items-center gap-3">
+                                        <div className="h-1.5 w-32 bg-white/5 rounded-full overflow-hidden">
+                                            <div className="h-full bg-indigo-500 shadow-[0_0_8px_#6366f1]" style={{ width: `${(current/32)*100}%` }} />
+                                        </div>
+                                        <span className="text-[10px] font-black text-slate-400">{Math.round((current/32)*100)}%</span>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                    <button onClick={() => setCurrent(c => Math.max(1, c-1))} className="p-2 hover:bg-white/5 rounded-xl transition-all disabled:opacity-20" disabled={current===1}><ChevronLeft className="w-5 h-5" /></button>
+                                    <button onClick={() => setCurrent(c => Math.min(32, c+1))} className="p-2 hover:bg-white/5 rounded-xl transition-all disabled:opacity-20" disabled={current===32}><ChevronRight className="w-5 h-5" /></button>
+                                </div>
+                            </div>
+                        </header>
+
+                        <nav className="flex px-10 pt-6 gap-10 border-b border-white/5 bg-[#030305]/40 shrink-0">
+                            {[
+                                { id: 'knowledge', label: 'Core Knowledge', icon: Microscope },
+                                { id: 'glossary', label: 'Tech Glossary', icon: BookOpen },
+                                { id: 'tricks', label: 'Exam Blueprints', icon: Zap },
+                                { id: 'questions', label: 'Assessments', icon: ClipboardList }
+                            ].map(t => (
+                                <button
+                                    key={t.id}
+                                    onClick={() => setActiveTab(t.id)}
+                                    className={`pb-4 flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.15em] transition-all relative ${activeTab === t.id ? 'text-indigo-400' : 'text-slate-500 hover:text-slate-300'}`}
+                                >
+                                    <t.icon className={`w-3.5 h-3.5 ${activeTab === t.id ? 'animate-pulse' : ''}`} />
+                                    {t.label}
+                                    {activeTab === t.id && (
+                                        <div className="absolute bottom-0 left-[-10%] w-[120%] h-[3px] bg-indigo-500 rounded-t-full shadow-[0_-2px_10px_#6366f1]" />
+                                    )}
+                                </button>
+                            ))}
+                        </nav>
+
+                        <div className="flex-1 overflow-y-auto p-12 custom-scrollbar scroll-smooth">
+                          {!unlocked ? (
+                            <UnlockGate moduleId={current} moduleTitle={SESSIONS_DATA[current]?.title || `Module ${current}`} onUnlocked={() => force()} />
+                          ) : (
+                            <div className="max-w-4xl mx-auto animate-in">
+                                <div className="mb-14">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[9px] font-black uppercase tracking-widest">Active Study Module</div>
+                                        <div className="text-[9px] font-bold text-slate-600 italic">{session.jacarandaDeepDive}</div>
+                                    </div>
+                                    <h1 className="text-5xl font-black mb-4 tracking-tighter text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 leading-tight">{session.title}</h1>
+                                </div>
+
+                                {activeTab === 'knowledge' && (
+                                    <div className="space-y-16">
+                                        {session.keyKnowledge.map((k, i) => (
+                                            <div key={i} className="space-y-8">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="w-10 h-10 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 font-black italic shadow-lg shadow-indigo-500/5">
+                                                        {i + 1}
+                                                    </div>
+                                                    <h3 className="text-white text-lg font-black uppercase tracking-tight">
+                                                        {k.subhead}
+                                                    </h3>
+                                                </div>
+                                                <div className="grid gap-5">
+                                                    {k.details.map((d, di) => (
+                                                        <div key={di} className="group p-8 bg-white/[0.02] border border-white/5 rounded-3xl text-[16px] leading-[1.7] text-slate-300 hover:bg-white/[0.04] hover:border-indigo-500/20 transition-all duration-300">
+                                                            <p className="flex gap-4">
+                                                                <span className="text-indigo-500/40 mt-1.5 shrink-0">•</span>
+                                                                {d}
+                                                            </p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {activeTab === 'glossary' && (
+                                    <div className="grid gap-4">
+                                        {session.glossary.map((g, i) => (
+                                            <div key={i} className="group p-6 bg-white/[0.02] border border-white/5 rounded-2xl flex items-start gap-8 hover:bg-white/[0.04] transition-all">
+                                                <div className="w-48 text-indigo-400 font-black text-[11px] uppercase tracking-wider pt-1 flex items-center gap-2 shrink-0">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 group-hover:scale-125 transition-transform" />
+                                                    {g.term}
+                                                </div>
+                                                <div className="flex-1 text-slate-400 text-sm leading-relaxed font-medium">{g.def}</div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {activeTab === 'tricks' && (
+                                    <div className="space-y-6">
+                                        <div className="p-6 bg-amber-500/10 border border-amber-500/20 rounded-2xl flex items-start gap-4 mb-8">
+                                            <Info className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+                                            <p className="text-[11px] font-bold text-amber-200/70 uppercase leading-relaxed tracking-wide">Chief Examiner Tip: These blueprints address frequent Section B marks.</p>
+                                        </div>
+                                        {session.vceWebTricks.map((t, i) => (
+                                            <div key={i} className="p-8 bg-indigo-500/[0.03] border border-indigo-500/10 rounded-3xl flex items-center gap-6 group hover:border-indigo-500/30 transition-all">
+                                                <div className="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 shrink-0 shadow-inner">
+                                                    <Zap className="w-5 h-5 fill-indigo-500/20" />
+                                                </div>
+                                                <p className="text-lg font-bold text-slate-100/90 tracking-tight italic leading-snug">"{t}"</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {activeTab === 'questions' && (
+                                    <div className="space-y-8">
+                                        <div className="flex items-center gap-2 mb-4">
+                                            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                            <h2 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">Module Proficiency Check</h2>
+                                        </div>
+                                        {session.questions.map((q, i) => (
+                                            <div key={i} className="p-10 bg-[#08080a] border border-white/5 rounded-3xl space-y-6 group hover:border-indigo-500/20 transition-all relative overflow-hidden shadow-2xl">
+                                                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                                    <span className="text-4xl font-black italic">{i+1}</span>
+                                                </div>
+                                                <div className="flex justify-between items-center">
+                                                    <span className="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-[9px] font-black text-indigo-400 uppercase">Assessment</span>
+                                                </div>
+                                                <p className="text-2xl font-black text-white leading-[1.2] tracking-tight pr-12">{q.q}</p>
+                                                <div className="pt-6 border-t border-white/5 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all flex flex-col gap-3">
+                                                    <div className="flex items-center gap-2">
+                                                        <CheckCircle2 className="text-emerald-500 w-4 h-4" />
+                                                        <span className="text-[10px] font-black text-emerald-500 uppercase">Exam Logic Hint</span>
+                                                    </div>
+                                                    <p className="text-slate-400 text-sm font-medium italic leading-relaxed">"{q.hint}"</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                <div className="h-40" />
+                            </div>
+                          )}
+                        </div>
+
+                        <footer className="h-12 border-t border-white/5 bg-[#030305] flex items-center px-8 justify-between text-[9px] font-black text-slate-600 tracking-[0.2em] uppercase shrink-0">
+                            <div className="flex gap-8">
+                                <span className="text-emerald-500/80 flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+                                    V16.0.0 High-Density Population Complete 
+                                </span>
+                            </div>
+                            <div className="flex gap-8 items-center">
+                                <span className="text-indigo-400">Jacaranda Master Database: 32 / 32</span>
+                            </div>
+                        </footer>
+                    </main>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
