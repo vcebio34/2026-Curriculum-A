@@ -53,17 +53,47 @@
                 aos: "Unit 3 AOS 1",
                 jacarandaDeepDive: "Chapter 1: The structure and role of nucleic acids.",
                 glossary: [
-                    { term: "Nucleotide", def: "Monomer of nucleic acids (Pentose sugar, Phosphate, Nitrogenous base)." },
-                    { term: "Phosphodiester bond", def: "Covalent bond between the 3' carbon of one sugar and 5' phosphate of another." },
-                    { term: "Antiparallel", def: "Strands run in opposite directions (5' to 3' and 3' to 5')." },
-                    { term: "Purine", def: "Double-ringed bases (Adenine, Guanine)." },
-                    { term: "Pyrimidine", def: "Single-ringed bases (Cytosine, Thymine, Uracil)." }
+                     { term: "Nucleotide", def: "Monomer of nucleic acids consisting of a pentose sugar, a phosphate group, and a nitrogenous base." },
+                    { term: "Phosphodiester bond", def: "Strong covalent bond formed via condensation between the 3' hydroxyl of one sugar and 5' phosphate of another." },
+                    { term: "Antiparallel", def: "DNA strands run in opposite directions: one 5' to 3' (phosphate end) and the other 3' to 5' (hydroxyl end)." },
+                    { term: "Purine", def: "Double-ringed nitrogenous bases; Adenine (A) and Guanine (G). Mnemonic: 'Pure As Gold'." },
+                    { term: "Pyrimidine", def: "Single-ringed nitrogenous bases; Cytosine (C), Thymine (T), and Uracil (U). Mnemonic: 'Cut the Py'." }
                 ],
-                keyKnowledge: [
-                    { subhead: "Chemical Anatomy", details: ["DNA is a double helix of antiparallel strands held by hydrogen bonds between complementary bases (A-T=2, G-C=3).", "RNA is single-stranded, contains Ribose (OH at 2' C), and uses Uracil instead of Thymine."] },
-                    { subhead: "Functional RNA", details: ["mRNA: Carries genetic code from nucleus to ribosome.", "tRNA: Transports amino acids; features anticodon.", "rRNA: Structural/catalytic component of ribosomes."] }
+               keyKnowledge: [
+                    { 
+                        subhead: "1. The Monomer: Chemical 'Address'", 
+                        details: [
+                            "1' Carbon: The nitrogenous base always attaches here via a glycosidic bond.",
+                            "2' Carbon: The 'Decision Point'. -OH = Ribose (RNA); -H = Deoxyribose (DNA).",
+                            "3' Carbon: The 'Growth Point'. Features an -OH group; the only site where new nucleotides can be added.",
+                            "5' Carbon: The 'Connector'. The phosphate group is attached here.",
+                            "Phosphodiester Bonds: Covalent bonds formed via condensation between 5' phosphate and 3' hydroxyl."
+                        ] 
+                    },
+                    { 
+                        subhead: "2. DNA Architecture & Stability", 
+                        details: [
+                            "Anti-parallel Alignment: One strand runs 5'→3' (phosphate top), the other 3'←5' (hydroxyl top).",
+                            "Hydrogen Bonding: A=T (2 bonds); G≡C (3 bonds).",
+                            "High G-C Content: Increases DNA stability; requires higher temperatures to denature (unzip).",
+                            "Packaging: DNA (~2m per cell) wraps around histone octamers to form nucleosomes."
+                        ] 
+                    },
+                    { 
+                        subhead: "3. The Functional Trio of RNA", 
+                        details: [
+                            "mRNA: Single-stranded, linear, and temporary. Carries code to ribosome before degradation.",
+                            "tRNA: Cloverleaf shape; 3' end 'Acceptor Stem' carries amino acids; Anticodon loop matches mRNA.",
+                            "rRNA: Complex, globular, and stable engine of the ribosome; catalyzes peptide bond formation."
+                        ] 
+                    }
                 ],
-                vceWebTricks: ["Higher G-C content = Higher melting temperature due to 3 H-bonds.", "Condensation reactions form the backbone; Hydrogen bonds form the rungs."],
+                
+                vceWebTricks: [
+                    "Higher G-C content = Higher melting temperature due to the extra (3rd) H-bond per pair.",
+                    "DNA is permanent (Blueprint); RNA is temporary (Disposable copy).",
+                    "T is replaced by U in RNA—students must recognize this in sequence conversion questions."
+                ],
                 questions: [
                     { q: "Explain the structural difference between purines and pyrimidines. [2 marks]", hint: "Purines: Double ring; Pyrimidines: Single ring." },
                     { q: "Why is DNA described as antiparallel? [2 marks]", hint: "One strand runs 5'-3', the other 3'-5'." },
@@ -72,6 +102,36 @@
                     { q: "How many hydrogen bonds between Cytosine and Guanine? [1 mark]", hint: "Three." }
                 ]
             },
+            diagramInstructions: [
+                    {
+                        title: "Diagram A: The Numbered Nucleotide",
+                        steps: [
+                            "Draw central pentagon (Sugar) with 'O' at top.",
+                            "Label corners clockwise 1' through 4'.",
+                            "Draw vertical line up from 4' to label 5'.",
+                            "Circle (Phosphate) on 5' and Rectangle (Base) on 1'.",
+                            "Write -OH on 3' corner: 'The only place to add new bits'."
+                        ]
+                    },
+                    {
+                        title: "Diagram B: The Anti-Parallel Stack",
+                        steps: [
+                            "Draw two left nucleotides connected 3' to 5'. Top is 5', bottom is 3'.",
+                            "Draw two right nucleotides flipped upside down. Top is 3', bottom is 5'.",
+                            "Draw dashed lines (2 for A-T, 3 for G-C).",
+                            "Label sugar-phosphate bond as 'Phosphodiester (Strong)'."
+                        ]
+                    }
+                ],
+                summaryTable: {
+                    headers: ["Feature", "DNA", "RNA"],
+                    rows: [
+                        ["Full Name", "Deoxyribonucleic Acid", "Ribonucleic Acid"],
+                        ["Sugar Type", "Deoxyribose (2'-H)", "Ribose (2'-OH)"],
+                        ["Bases", "A, T, C, G", "A, U, C, G"],
+                        ["Typical Structure", "Double-stranded (Helix)", "Single-stranded (Variable shapes)"],
+                        ["Directionality", "Anti-parallel (5'→3' / 3'→5')", "5'→3'"],
+                        ["Longevity", "Permanent (Blueprint)", "Temporary (Disposable copy)"]
             2: {
                 title: "Protein Hierarchy & Proteome",
                 aos: "Unit 3 AOS 1",
