@@ -53,38 +53,47 @@
                 aos: "Unit 3 AOS 1",
                 jacarandaDeepDive: "Chapter 1: The structure and role of nucleic acids.",
                 glossary: [
-                    { term: "Nucleotide", def: "Monomer of nucleic acids consisting of a pentose sugar, a phosphate group, and a nitrogenous base." },
-                    { term: "Phosphodiester bond", def: "Strong covalent bond formed via condensation between the 3' hydroxyl of one sugar and 5' phosphate of another." },
-                    { term: "Antiparallel", def: "DNA strands run in opposite directions: one 5' to 3' (phosphate end) and the other 3' to 5' (hydroxyl end)." },
-                    { term: "Purine", def: "Double-ringed nitrogenous bases; Adenine (A) and Guanine (G). Mnemonic: 'Pure As Gold'." },
-                    { term: "Pyrimidine", def: "Single-ringed nitrogenous bases; Cytosine (C), Thymine (T), and Uracil (U). Mnemonic: 'Cut the Py'." }
+                   { term: "Nucleosome", def: "A structural unit of eukaryotic chromatin, consisting of a length of DNA coiled around a core of eight histone proteins." },
+                    { term: "Histone", def: "Highly alkaline proteins found in eukaryotic cell nuclei that package and order the DNA into structural units called nucleosomes." },
+                    { term: "Condensation reaction", def: "The chemical process that joins monomers (nucleotides) together, releasing a water molecule and forming a covalent bond." },
+                    { term: "Complementary Base Pairing", def: "The standard arrangement of bases in nucleotides in relation to their opposite pairing: A with T (or U) and G with C." },
+                    { term: "Messenger RNA (mRNA)", def: "A single-stranded RNA molecule that is complementary to one of the DNA strands of a gene and carries the genetic code to the ribosome." },
+                    { term: "Transfer RNA (tRNA)", def: "A small RNA molecule with a cloverleaf structure that transfers a specific amino acid to a growing polypeptide chain during translation." },
+                    { term: "Ribosomal RNA (rRNA)", def: "The RNA component of the ribosome, which is essential for protein synthesis and provides catalytic activity for peptide bond formation." },
+                    { term: "Genome", def: "The complete set of genetic material (DNA) present in a cell or organism." },
+                    { term: "Sugar-Phosphate Backbone", def: "The structural framework of nucleic acids, consisting of alternating sugar and phosphate groups joined by phosphodiester bonds." },
+                    { term: "Degeneracy", def: "A property of the genetic code where multiple codons can code for the same single amino acid, providing protection against mutations." },
+                    { term: "Codon", def: "A sequence of three nucleotides in mRNA that corresponds to a specific amino acid or stop signal during protein synthesis." },
+                    { term: "Anticodon", def: "A sequence of three nucleotides in a tRNA molecule that is complementary to a specific codon in mRNA." },
+                    { term: "Deoxyribose", def: "The five-carbon sugar found in DNA, characterized by the absence of an oxygen atom on the 2' carbon." },
+                    { term: "Ribose", def: "The five-carbon sugar found in RNA, characterized by a hydroxyl (-OH) group on the 2' carbon, making it more chemically reactive." },
                 ],
                keyKnowledge: [
                     { 
                         subhead: "1. The Monomer: Chemical 'Address'", 
                         details: [
-                            "1' Carbon: The nitrogenous base always attaches here via a glycosidic bond.",
-                            "2' Carbon: The 'Decision Point'. -OH = Ribose (RNA); -H = Deoxyribose (DNA).",
-                            "3' Carbon: The 'Growth Point'. Features an -OH group; the only site where new nucleotides can be added.",
-                            "5' Carbon: The 'Connector'. The phosphate group is attached here.",
-                            "Phosphodiester Bonds: Covalent bonds formed via condensation between 5' phosphate and 3' hydroxyl."
+                            "1' Carbon: Site of the nitrogenous base attachment. Forms a N-glycosidic bond, anchoring the 'genetic code' to the sugar scaffold.",
+                            "2' Carbon: The 'Decision Point'. The presence of -OH (Ribose) makes the molecule more prone to hydrolysis (temporary RNA); -H (Deoxyribose) increases chemical stability (permanent DNA).",
+                            "3' Carbon: The 'Growth Point'. Features a free Hydroxyl (-OH) group which is the only substrate for DNA Polymerase to catalyze the next phosphodiester bond.",
+                            "5' Carbon: The 'Connector'. Holds the phosphate group. Polymerization always proceeds from the 5' end of the new nucleotide to the 3' end of the growing chain.",
+                            "Phosphodiester Bonds: High-energy covalent bonds that form the 'backbone'. They alternate between sugar and phosphate, providing structural rigidity."
                         ] 
                     },
                     { 
                         subhead: "2. DNA Architecture & Stability", 
                         details: [
-                            "Anti-parallel Alignment: One strand runs 5'→3' (phosphate top), the other 3'←5' (hydroxyl top).",
-                            "Hydrogen Bonding: A=T (2 bonds); G≡C (3 bonds).",
-                            "High G-C Content: Increases DNA stability; requires higher temperatures to denature (unzip).",
-                            "Packaging: DNA (~2m per cell) wraps around histone octamers to form nucleosomes."
+                            "Anti-parallel Alignment: One strand runs 5'→3' (terminal phosphate), the other 3'←5' (terminal hydroxyl). This ensures complementary bases are positioned at the correct angle to form H-bonds.",
+                            "Hydrogen Bonding: Complementary pairing (A=T with 2 bonds; G≡C with 3 bonds). These are weak individually to allow 'unzipping' but strong in aggregate.",
+                            "High G-C Content: Results in higher melting temperatures ($T_m$) and greater molecular density. VCE questions often link high G-C content to organisms in extreme (thermophilic) environments.",
+                            "Packaging: DNA (~2m) is too long for the nucleus (~10µm). It wraps around Histone Octamers (positively charged) to form Nucleosomes, which then supercoil into Chromatin."
                         ] 
                     },
                     { 
                         subhead: "3. The Functional Trio of RNA", 
                         details: [
-                            "mRNA: Single-stranded, linear, and temporary. Carries code to ribosome before degradation.",
-                            "tRNA: Cloverleaf shape; 3' end 'Acceptor Stem' carries amino acids; Anticodon loop matches mRNA.",
-                            "rRNA: Complex, globular, and stable engine of the ribosome; catalyzes peptide bond formation."
+                            "mRNA (Messenger): Single-stranded and linear. Acts as a transient 'middle-man' between the nucleus and ribosome. Its half-life is strictly regulated to control protein output.",
+                            "tRNA (Transfer): Cloverleaf shape stabilized by internal H-bonding. The 3' 'Acceptor Stem' binds a specific amino acid while the Anticodon loop recognizes the mRNA codon.",
+                            "rRNA (Ribosomal): Folded into complex 3D globular shapes. It is the most stable RNA form and acts as a ribozyme (catalytic RNA) to form peptide bonds between amino acids."
                         ] 
                      },
                      { 
@@ -109,16 +118,28 @@
                 ],
                 
                 vceWebTricks: [
-                    "Higher G-C content = Higher melting temperature due to the extra (3rd) H-bond per pair.",
+                   "Higher G-C content = Higher melting temperature due to the extra (3rd) H-bond per pair.",
                     "DNA is permanent (Blueprint); RNA is temporary (Disposable copy).",
-                    "T is replaced by U in RNA—students must recognize this in sequence conversion questions."
+                    "T is replaced by U in RNA—students must recognize this in sequence conversion questions.",
+                    "Phosphodiester bonds = n-1 in linear DNA; n in circular prokaryotic DNA.",
+                    "DNA is uniformly negative due to the phosphate group ($PO_4^{3-}$); always runs to the + electrode.",
+                    "The 2' carbon is the 'ID Card' (Sugar type); the 3' carbon is the 'Hook' (Growth point).",
+                    "Purine (2 rings) + Pyrimidine (1 ring) = Constant 3-ring width across the double helix.",
+                    "mRNA is intentionally fragile/transient to prevent permanent protein over-production.",
+                    "'Naked DNA' = Prokaryote; 'Nucleosomes/Chromatin' = Eukaryote.",
+                    "Always write 5' and 3' labels first before converting sequences to avoid reversal errors.",
                 ],
                 questions: [
-                    { q: "Explain the structural difference between purines and pyrimidines. [2 marks]", hint: "Purines: Double ring; Pyrimidines: Single ring." },
-                    { q: "Why is DNA described as antiparallel? [2 marks]", hint: "One strand runs 5'-3', the other 3'-5'." },
+                    { q: "Explain the structural difference between purines and pyrimidines. [2 marks]", hint: "Purines: Double ring (A, G); Pyrimidines: Single ring (C, T, U)." },
+                    { q: "Why is DNA described as antiparallel? [2 marks]", hint: "One strand runs 5' to 3', the other 3' to 5', allowing bases to face inward for H-bonding." },
                     { q: "Identify the bond formed during condensation polymerisation. [1 mark]", hint: "Phosphodiester bond." },
-                    { q: "Contrast the sugar in DNA vs RNA. [2 marks]", hint: "Deoxyribose (H at 2') vs Ribose (OH at 2')." },
-                    { q: "How many hydrogen bonds between Cytosine and Guanine? [1 mark]", hint: "Three." }
+                    { q: "Contrast the sugar in DNA vs RNA. [2 marks]", hint: "Deoxyribose (H at 2' carbon) vs Ribose (OH at 2' carbon)." },
+                    { q: "How many hydrogen bonds exist between Cytosine and Guanine? [1 mark]", hint: "Three." },
+                    { q: "Describe the formation of a phosphodiester bond. [3 marks]", hint: "Condensation reaction between 3' hydroxyl and 5' phosphate; releases H2O." },
+                    { q: "Justify why a high G-C content increases DNA stability. [2 marks]", hint: "G-C pairs have 3 hydrogen bonds; A-T have only 2. More energy to break." },
+                    { q: "Explain how DNA is packaged into a eukaryotic nucleus. [3 marks]", hint: "Negative DNA wraps around positive Histones to form Nucleosomes; supercoils into chromatin." },
+                    { q: "Predict the effect on replication if the 3' hydroxyl group is removed from nucleotides. [2 marks]", hint: "Chain termination; DNA polymerase cannot add new nucleotides without the 3' growth point." },
+                    { q: "Contrast the roles of mRNA and tRNA in protein synthesis. [2 marks]", hint: "mRNA: Carries code from nucleus to ribosome; tRNA: Transports specific amino acids to ribosome." },
                 ]
             },
             2: {
