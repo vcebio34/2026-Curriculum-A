@@ -53,53 +53,39 @@
                 aos: "Unit 3 AOS 1",
                 jacarandaDeepDive: "Chapter 1: The structure and role of nucleic acids.",
                 glossary: [
-                     { term: "Nucleotide", def: "Monomer of nucleic acids consisting of a pentose sugar, a phosphate group, and a nitrogenous base." },
+                    { term: "Nucleotide", def: "Monomer of nucleic acids consisting of a pentose sugar, a phosphate group, and a nitrogenous base." },
                     { term: "Phosphodiester bond", def: "Strong covalent bond formed via condensation between the 3' hydroxyl of one sugar and 5' phosphate of another." },
                     { term: "Antiparallel", def: "DNA strands run in opposite directions: one 5' to 3' (phosphate end) and the other 3' to 5' (hydroxyl end)." },
                     { term: "Purine", def: "Double-ringed nitrogenous bases; Adenine (A) and Guanine (G). Mnemonic: 'Pure As Gold'." },
                     { term: "Pyrimidine", def: "Single-ringed nitrogenous bases; Cytosine (C), Thymine (T), and Uracil (U). Mnemonic: 'Cut the Py'." }
-                    { term: "Nucleosome", def: "A structural unit of eukaryotic chromatin, consisting of a length of DNA coiled around a core of eight histone proteins." },
-                    { term: "Histone", def: "Highly alkaline proteins found in eukaryotic cell nuclei that package and order the DNA into structural units called nucleosomes." },
-                    { term: "Condensation reaction", def: "The chemical process that joins monomers (nucleotides) together, releasing a water molecule and forming a covalent bond." },
-                    { term: "Complementary Base Pairing", def: "The standard arrangement of bases in nucleotides in relation to their opposite pairing: A with T (or U) and G with C." },
-                    { term: "Messenger RNA (mRNA)", def: "A single-stranded RNA molecule that is complementary to one of the DNA strands of a gene and carries the genetic code to the ribosome." },
-                    { term: "Transfer RNA (tRNA)", def: "A small RNA molecule with a cloverleaf structure that transfers a specific amino acid to a growing polypeptide chain during translation." },
-                    { term: "Ribosomal RNA (rRNA)", def: "The RNA component of the ribosome, which is essential for protein synthesis and provides catalytic activity for peptide bond formation." },
-                    { term: "Genome", def: "The complete set of genetic material (DNA) present in a cell or organism." },
-                    { term: "Sugar-Phosphate Backbone", def: "The structural framework of nucleic acids, consisting of alternating sugar and phosphate groups joined by phosphodiester bonds." },
-                    { term: "Degeneracy", def: "A property of the genetic code where multiple codons can code for the same single amino acid, providing protection against mutations." },
-                    { term: "Codon", def: "A sequence of three nucleotides in mRNA that corresponds to a specific amino acid or stop signal during protein synthesis." },
-                    { term: "Anticodon", def: "A sequence of three nucleotides in a tRNA molecule that is complementary to a specific codon in mRNA." },
-                    { term: "Deoxyribose", def: "The five-carbon sugar found in DNA, characterized by the absence of an oxygen atom on the 2' carbon." },
-                    { term: "Ribose", def: "The five-carbon sugar found in RNA, characterized by a hydroxyl (-OH) group on the 2' carbon, making it more chemically reactive." }
                 ],
                keyKnowledge: [
                     { 
                         subhead: "1. The Monomer: Chemical 'Address'", 
                         details: [
-                            "1' Carbon: Site of the nitrogenous base attachment. Forms a N-glycosidic bond, anchoring the 'genetic code' to the sugar scaffold.",
-                            "2' Carbon: The 'Decision Point'. The presence of -OH (Ribose) makes the molecule more prone to hydrolysis (temporary RNA); -H (Deoxyribose) increases chemical stability (permanent DNA).",
-                            "3' Carbon: The 'Growth Point'. Features a free Hydroxyl (-OH) group which is the only substrate for DNA Polymerase to catalyze the next phosphodiester bond.",
-                            "5' Carbon: The 'Connector'. Holds the phosphate group. Polymerization always proceeds from the 5' end of the new nucleotide to the 3' end of the growing chain.",
-                            "Phosphodiester Bonds: High-energy covalent bonds that form the 'backbone'. They alternate between sugar and phosphate, providing structural rigidity."
+                            "1' Carbon: The nitrogenous base always attaches here via a glycosidic bond.",
+                            "2' Carbon: The 'Decision Point'. -OH = Ribose (RNA); -H = Deoxyribose (DNA).",
+                            "3' Carbon: The 'Growth Point'. Features an -OH group; the only site where new nucleotides can be added.",
+                            "5' Carbon: The 'Connector'. The phosphate group is attached here.",
+                            "Phosphodiester Bonds: Covalent bonds formed via condensation between 5' phosphate and 3' hydroxyl."
                         ] 
                     },
                     { 
                         subhead: "2. DNA Architecture & Stability", 
                         details: [
-                            "Anti-parallel Alignment: One strand runs 5'→3' (terminal phosphate), the other 3'←5' (terminal hydroxyl). This ensures complementary bases are positioned at the correct angle to form H-bonds.",
-                            "Hydrogen Bonding: Complementary pairing (A=T with 2 bonds; G≡C with 3 bonds). These are weak individually to allow 'unzipping' but strong in aggregate.",
-                            "High G-C Content: Results in higher melting temperatures ($T_m$) and greater molecular density. VCE questions often link high G-C content to organisms in extreme (thermophilic) environments.",
-                            "Packaging: DNA (~2m) is too long for the nucleus (~10µm). It wraps around Histone Octamers (positively charged) to form Nucleosomes, which then supercoil into Chromatin."
+                            "Anti-parallel Alignment: One strand runs 5'→3' (phosphate top), the other 3'←5' (hydroxyl top).",
+                            "Hydrogen Bonding: A=T (2 bonds); G≡C (3 bonds).",
+                            "High G-C Content: Increases DNA stability; requires higher temperatures to denature (unzip).",
+                            "Packaging: DNA (~2m per cell) wraps around histone octamers to form nucleosomes."
                         ] 
                     },
                     { 
                         subhead: "3. The Functional Trio of RNA", 
                         details: [
-                            "mRNA (Messenger): Single-stranded and linear. Acts as a transient 'middle-man' between the nucleus and ribosome. Its half-life is strictly regulated to control protein output.",
-                            "tRNA (Transfer): Cloverleaf shape stabilized by internal H-bonding. The 3' 'Acceptor Stem' binds a specific amino acid while the Anticodon loop recognizes the mRNA codon.",
-                            "rRNA (Ribosomal): Folded into complex 3D globular shapes. It is the most stable RNA form and acts as a ribozyme (catalytic RNA) to form peptide bonds between amino acids."
-                         ] 
+                            "mRNA: Single-stranded, linear, and temporary. Carries code to ribosome before degradation.",
+                            "tRNA: Cloverleaf shape; 3' end 'Acceptor Stem' carries amino acids; Anticodon loop matches mRNA.",
+                            "rRNA: Complex, globular, and stable engine of the ribosome; catalyzes peptide bond formation."
+                        ] 
                      },
                      { 
                         subhead: "Lets draw: The Numbered Nucleotide", 
@@ -126,28 +112,13 @@
                     "Higher G-C content = Higher melting temperature due to the extra (3rd) H-bond per pair.",
                     "DNA is permanent (Blueprint); RNA is temporary (Disposable copy).",
                     "T is replaced by U in RNA—students must recognize this in sequence conversion questions."
-                    "Higher G-C content = Higher melting temperature due to the extra (3rd) H-bond per pair.",
-                    "DNA is permanent (Blueprint); RNA is temporary (Disposable copy).",
-                    "T is replaced by U in RNA—students must recognize this in sequence conversion questions.",
-                    "Phosphodiester bonds = n-1 in linear DNA; n in circular prokaryotic DNA.",
-                    "DNA is uniformly negative due to the phosphate group ($PO_4^{3-}$); always runs to the + electrode.",
-                    "The 2' carbon is the 'ID Card' (Sugar type); the 3' carbon is the 'Hook' (Growth point).",
-                    "Purine (2 rings) + Pyrimidine (1 ring) = Constant 3-ring width across the double helix.",
-                    "mRNA is intentionally fragile/transient to prevent permanent protein over-production.",
-                    "'Naked DNA' = Prokaryote; 'Nucleosomes/Chromatin' = Eukaryote.",
-                    "Always write 5' and 3' labels first before converting sequences to avoid reversal errors."
                 ],
                 questions: [
-                    { q: "Explain the structural difference between purines and pyrimidines. [2 marks]", hint: "Purines: Double ring (A, G); Pyrimidines: Single ring (C, T, U)." },
-                    { q: "Why is DNA described as antiparallel? [2 marks]", hint: "One strand runs 5' to 3', the other 3' to 5', allowing bases to face inward for H-bonding." },
+                    { q: "Explain the structural difference between purines and pyrimidines. [2 marks]", hint: "Purines: Double ring; Pyrimidines: Single ring." },
+                    { q: "Why is DNA described as antiparallel? [2 marks]", hint: "One strand runs 5'-3', the other 3'-5'." },
                     { q: "Identify the bond formed during condensation polymerisation. [1 mark]", hint: "Phosphodiester bond." },
-                    { q: "Contrast the sugar in DNA vs RNA. [2 marks]", hint: "Deoxyribose (H at 2' carbon) vs Ribose (OH at 2' carbon)." },
-                    { q: "How many hydrogen bonds exist between Cytosine and Guanine? [1 mark]", hint: "Three." },
-                    { q: "Describe the formation of a phosphodiester bond. [3 marks]", hint: "Condensation reaction between 3' hydroxyl and 5' phosphate; releases H2O." },
-                    { q: "Justify why a high G-C content increases DNA stability. [2 marks]", hint: "G-C pairs have 3 hydrogen bonds; A-T have only 2. More energy to break." },
-                    { q: "Explain how DNA is packaged into a eukaryotic nucleus. [3 marks]", hint: "Negative DNA wraps around positive Histones to form Nucleosomes; supercoils into chromatin." },
-                    { q: "Predict the effect on replication if the 3' hydroxyl group is removed from nucleotides. [2 marks]", hint: "Chain termination; DNA polymerase cannot add new nucleotides without the 3' growth point." },
-                    { q: "Contrast the roles of mRNA and tRNA in protein synthesis. [2 marks]", hint: "mRNA: Carries code from nucleus to ribosome; tRNA: Transports specific amino acids to ribosome." }
+                    { q: "Contrast the sugar in DNA vs RNA. [2 marks]", hint: "Deoxyribose (H at 2') vs Ribose (OH at 2')." },
+                    { q: "How many hydrogen bonds between Cytosine and Guanine? [1 mark]", hint: "Three." }
                 ]
             },
             2: {
@@ -155,88 +126,24 @@
                 aos: "Unit 3 AOS 1",
                 jacarandaDeepDive: "Chapter 2: Protein structure and function.",
                 glossary: [
-                    { term: "Proteome", def: "The complete set of proteins expressed by the genome of an individual cell or organism at a given time." },
-                    { term: "R-group", def: "The variable side chain of an amino acid that determines its chemical properties (e.g., polarity, charge)." },
-                    { term: "Peptide Bond", def: "A strong covalent bond formed between the carboxyl group of one amino acid and the amino group of another." },
-                    { term: "Denaturation", def: "The process where a protein loses its functional 3D shape due to the breaking of secondary and tertiary bonds (usually via heat or pH)." },
-                    { term: "Alpha Helix", def: "A common secondary structure where the polypeptide chain is coiled into a spiral, stabilized by hydrogen bonds." },
-                    { term: "Beta-pleated Sheet", def: "A secondary structure consisting of parallel or anti-parallel strands connected by hydrogen bonds, forming a flat, folded surface." },
-                    { term: "Genetic Code", def: "The set of rules by which information encoded in genetic material is translated into proteins by living cells." },
-                    { term: "Universal", def: "The genetic code is the same in almost all organisms, meaning a specific codon will code for the same amino acid in a human as it does in a bacteria." },
-                    { term: "Degenerate / Redundant", def: "A property of the genetic code where a single amino acid can be coded for by more than one specific codon." },
-                    { term: "Non-overlapping", def: "Each base in the sequence is read only once in a single triplet/codon; the 'reading frame' does not skip or double-count bases." },
-                    { term: "Gene Expression", def: "The multi-step process by which the information encoded in a gene is used to direct the assembly of a protein." },
-                    { term: "Transcription", def: "The process of copying a segment of DNA into RNA (specifically pre-mRNA in eukaryotes)." },
-                    { term: "RNA Polymerase", def: "The enzyme responsible for copying a DNA sequence into an RNA sequence during transcription." },
-                    { term: "Promoter", def: "A specific region of DNA (e.g., TATA box) where RNA polymerase binds to initiate transcription." },
-                    { term: "Introns", def: "Non-coding regions of a gene that are transcribed but removed during RNA processing." },
-                    { term: "Exons", def: "Coding regions of a gene that are joined together after splicing and translated into a protein." },
-                    { term: "Alternative Splicing", def: "The process during RNA processing where different combinations of exons are joined, allowing one gene to produce multiple protein variants." },
-                    { term: "Poly-A Tail", def: "A chain of adenine nucleotides added to the 3' end of pre-mRNA to increase stability and facilitate export from the nucleus." },
-                    { term: "Methylated Cap", def: "A modified guanine nucleotide added to the 5' end of pre-mRNA to protect it from degradation and help the ribosome recognize it." },
-                    { term: "Translation", def: "The process at the ribosome where the mRNA sequence is decoded to build a specific polypeptide chain." },
-                    { term: "Anticodon", def: "A triplet of bases on tRNA that is complementary to an mRNA codon." },
-                    { term: "Template Strand", def: "The DNA strand (3' to 5') that is read by RNA polymerase to create a complementary RNA strand." },
-                    { term: "Coding Strand", def: "The DNA strand (5' to 3') that has the same sequence as the mRNA (except T is replaced by U)." }
+                    { term: "Proteome", def: "Total set of proteins expressed by a genome." },
+                    { term: "R-group", def: "Variable side chain determining AA properties." },
+                    { term: "Peptide Bond", def: "Covalent bond between amino acids." },
+                    { term: "Denaturation", def: "Loss of 3D structure (Tertiary/Secondary)." },
+                    { term: "Alpha Helix", def: "Secondary coil stabilized by H-bonds." }
                 ],
-            
                 keyKnowledge: [
-                    { 
-                        subhead: "1. Features of the Genetic Code", 
-                        details: [
-                            "Universal: Because the code is nearly identical across all life forms, genes can be transferred between species (transgenesis) and still function.",
-                            "Degenerate: There are 64 possible codons but only 20 amino acids. This 'redundancy' acts as a buffer; if a point mutation occurs at the 3rd base (the wobble position), it often still codes for the same amino acid.",
-                            "Triplets & Codons: DNA is read in triplets; these are transcribed into mRNA codons. Each codon represents a specific start, stop, or amino acid instruction."
-                        ] 
-                    },
-                    { 
-                        subhead: "2. Steps in Gene Expression", 
-                        details: [
-                            "Overview: Gene expression is the process of turning genetic 'blueprints' into functional 'machinery' (proteins).",
-                            "Flow of Information: The 'Central Dogma' of biology: DNA (Information) -> RNA (Messenger) -> Protein (Function).",
-                            "Spatial Separation: In eukaryotes, transcription occurs in the protected nucleus, while translation occurs in the cytoplasm at the ribosome."
-                        ] 
-                    },
-                    { 
-                        subhead: "3. Transcription & Eukaryotic RNA Processing", 
-                        details: [
-                            "Initiation: RNA Polymerase binds to the promoter region. The DNA double helix unwinds and unzips.",
-                            "Elongation: RNA Polymerase moves along the template strand (3' to 5'), building a pre-mRNA strand in the 5' to 3' direction.",
-                            "RNA Processing (Post-Transcription): 1. Splicing: Spliceosomes remove non-coding introns and join coding exons. 2. Capping: A 5' methyl-G cap is added. 3. Tailing: A 3' poly-A tail is added. The result is 'mature mRNA'."
-                        ] 
-                    },
-                    { 
-                        subhead: "4. Translation", 
-                        details: [
-                            "Ribosome Attachment: Mature mRNA travels through a nuclear pore to a ribosome. The ribosome scans for the START codon (AUG).",
-                            "tRNA Recruitment: tRNA molecules with complementary anticodons bring specific amino acids to the ribosome.",
-                            "Polypeptide Formation: Peptide bonds form between adjacent amino acids via condensation reactions. The tRNA is released to be re-loaded.",
-                            "Termination: The process continues until a STOP codon is reached; the polypeptide is released for folding in the ER or Golgi."
-                        ] 
-                    }
+                    { subhead: "Amino Acids", details: ["Monomers joined by condensation polymerisation at the ribosome.", "R-groups can be polar, non-polar, acidic, or basic."] },
+                    { subhead: "Folding Levels", details: ["Primary: Sequence of AAs.", "Secondary: Alpha-helices/Beta-sheets (H-bonds).", "Tertiary: 3D shape (R-group interactions).", "Quaternary: Multiple subunits."] }
                 ],
-            
-                vceWebTricks: [
-                    "Degeneracy vs Ambiguity: The code is degenerate (one AA has many codons) but NOT ambiguous (one codon never codes for more than one AA).",
-                    "The Template Strand Rule: RNA Polymerase reads the template from 3' to 5' so it can build the mRNA from 5' to 3'.",
-                    "Alternative Splicing: This is why the proteome is vastly larger than the genome. By skipping certain exons, one gene can yield multiple distinct proteins.",
-                    "Introns 'In the bin'; Exons 'Expressed': Use this rhyme to remember which parts are kept during processing.",
-                    "Translation is Energetically Expensive: It requires ATP/GTP at every step (loading tRNA, translocation). Cells only translate what they need.",
-                    "The 'Stop' Codon Trap: A stop codon does NOT code for an amino acid; it recruits a release factor. Do not count it as an amino acid in 'chain length' questions.",
-                    "Post-Translational Modification: Proteins aren't 'finished' at the ribosome. They often need folding (ER) or tagging (Golgi) to become part of the proteome.",
-                    "Prokaryote Shortcut: Bacteria lack a nucleus, so transcription and translation happen simultaneously. No RNA processing (splicing) occurs in prokaryotes.",
-                    "Codon vs Anticodon Direction: mRNA is 5' to 3'; the tRNA anticodon must align antiparallel to it during binding.",
-                    "Gene Regulation: Not all genes are expressed at once. The 'Promoter' acts like a light switch, determining when and where transcription starts."
-                ],
-            
+                vceWebTricks: ["Proteome > Genome due to alternative splicing.", "Denaturation does not break peptide bonds (primary structure)."],
                 questions: [
-                    { q: "Explain the importance of the genetic code being 'universal' in the context of bacterial insulin production. [2 marks]", hint: "Human insulin genes can be inserted into bacteria; because the code is universal, the bacteria translate the human sequence into the exact same insulin protein." },
-                    { q: "Describe three modifications that occur during eukaryotic RNA processing. [3 marks]", hint: "Addition of 5' methyl cap, 3' poly-A tail, and the splicing out of introns." },
-                    { q: "Contrast the roles of the 'template strand' and the 'coding strand' during transcription. [2 marks]", hint: "Template: The strand actually read by RNA polymerase. Coding: The other strand, which matches the mRNA sequence (except T/U)." },
-                    { q: "Explain how a degenerate genetic code provides a survival advantage. [2 marks]", hint: "Silent mutations: A change in the DNA sequence might not change the amino acid, preventing a change in protein structure/function." },
-                    { q: "Outline the role of the tRNA anticodon during translation. [2 marks]", hint: "It binds complementarily to the mRNA codon, ensuring the correct amino acid is placed in the sequence." }
+                    { q: "Define 'Proteome'. [1 mark]", hint: "All proteins expressed by a cell/organism." },
+                    { q: "What determines the tertiary structure? [2 marks]", hint: "Interactions between R-groups (disulfide, ionic, etc)." },
+                    { q: "Identify the bonds in secondary structure. [1 mark]", hint: "Hydrogen bonds in the backbone." },
+                    { q: "Explain the effect of high temp on proteins. [2 marks]", hint: "Denaturation: Bonds break, shape lost, function lost." },
+                    { q: "Why is the proteome larger than the genome? [2 marks]", hint: "Alternative splicing creates multiple proteins per gene." }
                 ]
-            }
             },
             3: {
                 title: "Gene Structure & Regulation",
