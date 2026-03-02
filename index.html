@@ -126,17 +126,75 @@
                 aos: "Unit 3 AOS 1",
                 jacarandaDeepDive: "Chapter 2: Protein structure and function.",
                 glossary: [
-                    { term: "Proteome", def: "Total set of proteins expressed by a genome." },
-                    { term: "R-group", def: "Variable side chain determining AA properties." },
-                    { term: "Peptide Bond", def: "Covalent bond between amino acids." },
-                    { term: "Denaturation", def: "Loss of 3D structure (Tertiary/Secondary)." },
-                    { term: "Alpha Helix", def: "Secondary coil stabilized by H-bonds." }
+                    { term: "Proteome", def: "The complete set of proteins expressed by the genome of an individual cell or organism at a given time." },
+                    { term: "R-group", def: "The variable side chain of an amino acid that determines its chemical properties (e.g., polarity, charge)." },
+                    { term: "Peptide Bond", def: "A strong covalent bond formed between the carboxyl group of one amino acid and the amino group of another." },
+                    { term: "Denaturation", def: "The process where a protein loses its functional 3D shape due to the breaking of secondary and tertiary bonds (usually via heat or pH)." },
+                    { term: "Alpha Helix", def: "A common secondary structure where the polypeptide chain is coiled into a spiral, stabilized by hydrogen bonds." },
+                    { term: "Beta-pleated Sheet", def: "A secondary structure consisting of parallel or anti-parallel strands connected by hydrogen bonds, forming a flat, folded surface." },
+                    { term: "Genetic Code", def: "The set of rules by which information encoded in genetic material is translated into proteins by living cells." },
+                    { term: "Universal", def: "The genetic code is the same in almost all organisms, meaning a specific codon will code for the same amino acid in a human as it does in a bacteria." },
+                    { term: "Degenerate / Redundant", def: "A property of the genetic code where a single amino acid can be coded for by more than one specific codon." },
+                    { term: "Non-overlapping", def: "Each base in the sequence is read only once in a single triplet/codon; the 'reading frame' does not skip or double-count bases." },
+                    { term: "Gene Expression", def: "The multi-step process by which the information encoded in a gene is used to direct the assembly of a protein." },
+                    { term: "Transcription", def: "The process of copying a segment of DNA into RNA (specifically pre-mRNA in eukaryotes)." },
+                    { term: "RNA Polymerase", def: "The enzyme responsible for copying a DNA sequence into an RNA sequence during transcription." },
+                    { term: "Promoter", def: "A specific region of DNA (e.g., TATA box) where RNA polymerase binds to initiate transcription." },
+                    { term: "Introns", def: "Non-coding regions of a gene that are transcribed but removed during RNA processing." },
+                    { term: "Exons", def: "Coding regions of a gene that are joined together after splicing and translated into a protein." },
+                    { term: "Alternative Splicing", def: "The process during RNA processing where different combinations of exons are joined, allowing one gene to produce multiple protein variants." },
+                    { term: "Poly-A Tail", def: "A chain of adenine nucleotides added to the 3' end of pre-mRNA to increase stability and facilitate export from the nucleus." },
+                    { term: "Methylated Cap", def: "A modified guanine nucleotide added to the 5' end of pre-mRNA to protect it from degradation and help the ribosome recognize it." },
+                    { term: "Translation", def: "The process at the ribosome where the mRNA sequence is decoded to build a specific polypeptide chain." },
+                    { term: "Anticodon", def: "A triplet of bases on tRNA that is complementary to an mRNA codon." },
+                    { term: "Template Strand", def: "The DNA strand (3' to 5') that is read by RNA polymerase to create a complementary RNA strand." },
+                    { term: "Coding Strand", def: "The DNA strand (5' to 3') that has the same sequence as the mRNA (except T is replaced by U)." }
                 ],
                 keyKnowledge: [
-                    { subhead: "Amino Acids", details: ["Monomers joined by condensation polymerisation at the ribosome.", "R-groups can be polar, non-polar, acidic, or basic."] },
-                    { subhead: "Folding Levels", details: ["Primary: Sequence of AAs.", "Secondary: Alpha-helices/Beta-sheets (H-bonds).", "Tertiary: 3D shape (R-group interactions).", "Quaternary: Multiple subunits."] }
+                    { 
+                        subhead: "1. Features of the Genetic Code", 
+                        details: [
+                            "Universal: Because the code is nearly identical across all life forms, genes can be transferred between species (transgenesis) and still function.",
+                            "Degenerate: There are 64 possible codons but only 20 amino acids. This 'redundancy' acts as a buffer; if a point mutation occurs at the 3rd base (the wobble position), it often still codes for the same amino acid.",
+                            "Triplets & Codons: DNA is read in triplets; these are transcribed into mRNA codons. Each codon represents a specific start, stop, or amino acid instruction."
+                        ] 
+                    },
+                    { 
+                        subhead: "2. Steps in Gene Expression", 
+                        details: [
+                            "Overview: Gene expression is the process of turning genetic 'blueprints' into functional 'machinery' (proteins).",
+                            "Flow of Information: The 'Central Dogma' of biology: DNA (Information) -> RNA (Messenger) -> Protein (Function).",
+                            "Spatial Separation: In eukaryotes, transcription occurs in the protected nucleus, while translation occurs in the cytoplasm at the ribosome."
+                        ] 
+                    },
+                    { 
+                        subhead: "3. Transcription & Eukaryotic RNA Processing", 
+                        details: [
+                            "Initiation: RNA Polymerase binds to the promoter region. The DNA double helix unwinds and unzips.",
+                            "Elongation: RNA Polymerase moves along the template strand (3' to 5'), building a pre-mRNA strand in the 5' to 3' direction.",
+                            "RNA Processing (Post-Transcription): 1. Splicing: Spliceosomes remove non-coding introns and join coding exons. 2. Capping: A 5' methyl-G cap is added. 3. Tailing: A 3' poly-A tail is added. The result is 'mature mRNA'."
+                        ] 
+                    },
+                    { 
+                        subhead: "4. Translation", 
+                        details: [
+                            "Ribosome Attachment: Mature mRNA travels through a nuclear pore to a ribosome. The ribosome scans for the START codon (AUG).",
+                            "tRNA Recruitment: tRNA molecules with complementary anticodons bring specific amino acids to the ribosome.",
+                            "Polypeptide Formation: Peptide bonds form between adjacent amino acids via condensation reactions. The tRNA is released to be re-loaded.",
+                            "Termination: The process continues until a STOP codon is reached; the polypeptide is released for folding in the ER or Golgi."
+                        ] 
+                    }
                 ],
-                vceWebTricks: ["Proteome > Genome due to alternative splicing.", "Denaturation does not break peptide bonds (primary structure)."],
+                vceWebTricks: [ "Degeneracy vs Ambiguity: The code is degenerate (one AA has many codons) but NOT ambiguous (one codon never codes for more than one AA).",
+                                "The Template Strand Rule: RNA Polymerase reads the template from 3' to 5' so it can build the mRNA from 5' to 3'.",
+                                "Alternative Splicing: This is why the proteome is vastly larger than the genome. By skipping certain exons, one gene can yield multiple distinct proteins.",
+                                "Introns 'In the bin'; Exons 'Expressed': Use this rhyme to remember which parts are kept during processing.",
+                                "Translation is Energetically Expensive: It requires ATP/GTP at every step (loading tRNA, translocation). Cells only translate what they need.",
+                                "The 'Stop' Codon Trap: A stop codon does NOT code for an amino acid; it recruits a release factor. Do not count it as an amino acid in 'chain length' questions.",
+                                "Post-Translational Modification: Proteins aren't 'finished' at the ribosome. They often need folding (ER) or tagging (Golgi) to become part of the proteome.",
+                                "Prokaryote Shortcut: Bacteria lack a nucleus, so transcription and translation happen simultaneously. No RNA processing (splicing) occurs in prokaryotes.",
+                                "Codon vs Anticodon Direction: mRNA is 5' to 3'; the tRNA anticodon must align antiparallel to it during binding.",
+                                "Gene Regulation: Not all genes are expressed at once. The 'Promoter' acts like a light switch, determining when and where transcription starts."],
                 questions: [
                     { q: "Define 'Proteome'. [1 mark]", hint: "All proteins expressed by a cell/organism." },
                     { q: "What determines the tertiary structure? [2 marks]", hint: "Interactions between R-groups (disulfide, ionic, etc)." },
