@@ -229,23 +229,80 @@
                 aos: "Unit 3 AOS 1",
                 jacarandaDeepDive: "Chapter 3: Operons and Eukaryotic genes.",
                 glossary: [
-                    { term: "Operon", def: "Cluster of genes under one promoter (Prokaryotes)." },
-                    { term: "Promoter", def: "RNA Polymerase binding site." },
-                    { term: "Operator", def: "Repressor binding site." },
-                    { term: "Intron", def: "Non-coding region removed in splicing." },
-                    { term: "Exon", def: "Coding region expressed in mRNA." }
+                    { term: "Structural Gene", def: "Codes for proteins that become part of the cell structure or function as enzymes/signaling molecules." },
+                    { term: "Regulatory Gene", def: "Codes for transcription factors or repressor proteins that control the expression of other genes." },
+                    { term: "Operon", def: "A functional unit of DNA containing a cluster of genes under the control of a single promoter (Prokaryotes)." },
+                    { term: "Promoter", def: "The binding site for RNA Polymerase to initiate transcription." },
+                    { term: "Operator", def: "The binding site for a repressor protein; acts as the 'on/off' switch for transcription." },
+                    { term: "Leader Sequence", def: "The segment of mRNA (trpL) between the operator and the first structural gene, containing the attenuator." },
+                    { term: "Attenuation", def: "A regulatory mechanism that terminates transcription prematurely based on the speed of translation." },
+                    { term: "Co-repressor", def: "A molecule (like Tryptophan) that binds to a repressor protein to activate it." },
+                    { term: "Conformational Change", def: "A change in the 3D shape of a protein (e.g., the repressor) that alters its functional state." },
+                    { term: "Intron", def: "Non-coding DNA regions removed from pre-mRNA during RNA processing." },
+                    { term: "Exon", def: "Coding DNA regions that are joined together to form the mature mRNA." }
                 ],
                 keyKnowledge: [
-                    { subhead: "Trp Operon", details: ["Repression: Trp binds repressor -> binds operator -> blocks transcription.", "Attenuation: Ribosome speed determines if terminator loop forms."] },
-                    { subhead: "Eukaryotic Genes", details: ["Contain Introns/Exons.", "Post-transcriptional mods: 5' Cap, 3' Tail, Splicing."] }
+                                {
+                        subhead: "1. Structural vs Regulatory Genes",
+                        details: [
+                            "Structural Genes: Produce proteins for cellular structure or function. Example: trpE-A (enzymes for Trp synthesis) or Keratin.",
+                            "Regulatory Genes: Produce proteins that control other genes. Example: trpR (produces the repressor).",
+                            "Key Distinction: Regulatory genes are often 'constitutive' (always expressed), while structural genes are regulated (only on when needed).",
+                            "Whiteboard Instruction: Draw a 'Boss' (Regulatory) sending a 'Memo' (Repressor) to a 'Worker' (Structural Gene)."
+                        ]
+                    },
+                    { 
+                        subhead: "2. The trp Operon: Repression (Initiation Control)", 
+                        details: [
+                            "Logic: Prevents transcription from starting when Trp levels are high.",
+                            "High Tryptophan: Trp binds to the inactive repressor -> Conformational change -> Repressor becomes active -> Binds to Operator -> RNA Polymerase is physically blocked from the promoter.",
+                            "Low Tryptophan: Repressor stays inactive -> Cannot bind DNA -> RNA Polymerase binds and begins transcribing.",
+                            "Whiteboard Instruction (Step 1): Draw the DNA strand with Promoter and Operator. Draw RNA Polymerase trying to reach the genes.",
+                            "Whiteboard Instruction (Step 2): Place an 'Active Repressor' block on the Operator to show it acting as a physical barricade."
+                        ] 
+                    },
+                    { 
+                        subhead: "3. The trp Operon: Attenuation (Elongation Control)", 
+                        details: [
+                            "Logic: Stops transcription before it finishes if Trp is abundant. Requires coupled transcription/translation (Prokaryotes only).",
+                            "High Tryptophan (Stop): Ribosome moves fast -> Covers Region 2 -> Region 3 and 4 pair to form a 'Terminator Loop' -> Tension pulls RNA Polymerase off the DNA.",
+                            "Low Tryptophan (Go): Ribosome stalls at Region 1 (waiting for tRNA-Trp) -> Region 2 pairs with Region 3 ('Anti-terminator') -> RNA Polymerase continues through the genes.",
+                            "Whiteboard Instruction (Step 1): Draw mRNA with Region 3-4 loop for 'Stop'.",
+                            "Whiteboard Instruction (Step 2): Draw mRNA with a stalled Ribosome and a 2-3 loop for 'Go'."
+                        ] 
+                    },
+                    { 
+                        subhead: "4. Eukaryotic Gene Structure & Summary Table", 
+                        details: [
+                            "Structure: Eukaryotic genes contain Introns (removed) and Exons (expressed). They are processed with a 5' Cap and 3' Poly-A Tail.",
+                            "Alternative Splicing: Different exon combinations = different proteins (increases diversity).",
+                            "Comparison Table - Prokaryotic vs Eukaryotic Regulation:",
+                            "• Organisation: Prok = Operons (many genes/1 promoter) | Euk = Individual (1 gene/1 promoter).",
+                            "• Splicing: Prok = None (no introns) | Euk = Common (Introns/Exons).",
+                            "• Separation: Prok = Simultaneous (Coupled) | Euk = Separated (Transcription in Nucleus, Translation in Cytoplasm).",
+                            "• Attenuation: Prok = Possible | Euk = Impossible (due to nuclear membrane).",
+                            "Whiteboard Instruction: Create a 2-column table comparing 'Operons' vs 'Monocistronic' genes."
+                            
+                        ] 
+                    }
                 ],
-                vceWebTricks: ["Bacteria lack introns.", "Repression prevents start; Attenuation stops completion."],
+                vceWebTricks: ["Repression = Light switch (Off at start). Attenuation = Emergency brake (Off during the trip).",
+                                "No nucleus = Coupled transcription/translation = Attenuation is possible in prokaryotes only.",
+                                "Regulatory genes are like the 'Volume Knob' or 'On/Off' switch; they are usually constitutive (always expressed).",
+                                "Exam Trap: Tryptophan is a CO-REPRESSOR. It does not bind to the DNA itself; it binds to the repressor protein.",
+                                "Mnemonic for Attenuation: Region 3+4 = 'Shut the door' (Terminator loop). Region 2+3 = 'The flow continues' (Anti-terminator).",
+                                "Alternative Splicing: Increases the size of the proteome without increasing the size of the genome.",
+                                "The trpR gene (Regulatory) has its own promoter and is NOT part of the trp operon itself.",
+                                "Always check if a question asks for 'Initiation' (Repression) or 'Elongation' (Attenuation)."],
                 questions: [
-                    { q: "Role of the Operator? [1 mark]", hint: "Binding site for Repressor protein." },
-                    { q: "Explain attenuation when Trp is high. [3 marks]", hint: "Ribosome fast -> 3-4 loop -> RNA Poly detaches." },
-                    { q: "Contrast Introns and Exons. [2 marks]", hint: "Introns removed/non-coding; Exons joined/coding." },
-                    { q: "Why add a Poly-A tail? [1 mark]", hint: "Stability and nuclear export." },
-                    { q: "What binds to the Promoter? [1 mark]", hint: "RNA Polymerase." }
+                    { q: "Contrast regulatory and structural genes using the trp operon as an example. [4 marks]", hint: "Identify trpR as regulatory (makes repressor) and trpE-A as structural (makes enzymes). Explain that trpR controls whether the trpE-A enzymes are made." },
+                    { q: "Why is attenuation impossible in humans? [2 marks]", hint: "Because transcription and translation are spatially separated by the nuclear membrane; attenuation requires them to happen at the same time." },
+                    { q: "Identify the three post-transcriptional modifications in eukaryotes. [3 marks]", hint: "1. 5' Methyl-G Cap. 2. 3' Poly-A Tail. 3. Splicing of introns." },
+                    { q: "Describe the conformational change that occurs in the trp repressor when tryptophan levels are high. [2 marks]", hint: "Trp binds to the inactive repressor, changing its 3D shape so it can successfully bind to the operator sequence." },
+                    { q: "Explain how alternative splicing contributes to the diversity of the proteome. [3 marks]", hint: "Exons can be joined in different combinations from the same pre-mRNA, leading to different mature mRNA sequences and thus different proteins." },
+                    { q: "Predict the effect on the trp operon if the operator sequence was mutated so the repressor could not bind. [2 marks]", hint: "The operon would be constitutively expressed (always on), even when tryptophan levels are high, leading to metabolic waste." },
+                    { q: "In the context of attenuation, explain why the ribosome stalls at Region 1 when tryptophan levels are low. [2 marks]", hint: "There is a lack of charged tRNA-Trp, so the ribosome must wait at the tryptophan codons in Region 1 for the correct amino acid to arrive." },
+                    { q: "List two structural differences between a prokaryotic operon and a eukaryotic gene. [2 marks]", hint: "Prokaryotes: Cluster of genes, no introns. Eukaryotes: Single gene per promoter, contains introns/exons." }
                 ]
             },
             4: {
