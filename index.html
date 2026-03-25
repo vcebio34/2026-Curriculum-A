@@ -330,28 +330,59 @@
                 ]
             },
             5: {
-                title: "Enzymes & Inhibition",
+                title: "Enzyme Mechanics & Regulation",
                 aos: "Unit 3 AOS 1",
                 jacarandaDeepDive: "Chapter 5: Biocatalysts.",
                 glossary: [
-                    { term: "Active Site", def: "Region complementary to substrate." },
-                    { term: "Induced Fit", def: "Active site changes shape to bind substrate." },
-                    { term: "Allosteric", def: "Site other than active site." },
-                    { term: "Competitive", def: "Inhibitor binds active site." },
-                    { term: "Non-competitive", def: "Inhibitor binds allosteric site." }
-                ],
-                keyKnowledge: [
-                    { subhead: "Mechanism", details: ["Enzymes lower Activation Energy (Ea).", "Induced Fit: Shape change stresses bonds."] },
-                    { subhead: "Inhibition", details: ["Competitive: Overcome by substrate.", "Non-competitive: Cannot be overcome (Vmax lowered)."] }
-                ],
-                vceWebTricks: ["Enzymes don't change Delta G.", "Denaturation is irreversible."],
-                questions: [
-                    { q: "Explain 'induced fit'. [2 marks]", hint: "Active site molds around substrate for tight fit." },
-                    { q: "Contrast competitive/non-competitive. [3 marks]", hint: "Binding site difference; effect of substrate conc." },
-                    { q: "Effect of heat on enzymes? [2 marks]", hint: "High KE -> Denaturation (bond breakage)." },
-                    { q: "Define Activation Energy. [1 mark]", hint: "Energy needed to start reaction." },
-                    { q: "What is saturation? [1 mark]", hint: "All active sites occupied." }
-                ]
+            { term: "Biochemical Pathway", def: "A sequence of biochemical reactions in which the product of one reaction becomes the substrate for the next, mediated by specific enzymes at each step." },
+            { term: "Active Site", def: "A specific three-dimensional pocket or groove on the surface of an enzyme, formed by the tertiary structure, where the substrate binds and catalysis occurs." },
+            { term: "Induced Fit Model", def: "A model of enzyme action describing how the binding of a substrate induces a conformational change in the enzyme's active site to fit the substrate more tightly." },
+            { term: "Activation Energy (Ea)", def: "The threshold energy required to break chemical bonds in reactants to initiate a chemical reaction; enzymes lower this to increase reaction rates." },
+            { term: "Allosteric Site", def: "A regulatory site on an enzyme, distinct from the active site, where non-competitive inhibitors or activators bind to alter the enzyme's activity." },
+            { term: "Denaturation", def: "The irreversible change in a protein's tertiary structure—specifically the active site—caused by extreme heat or pH, rendering the enzyme non-functional." },
+            { term: "Competitive Inhibitor", def: "A molecule that structurally resembles the substrate and competes for binding at the active site, thereby blocking the real substrate." },
+            { term: "Non-competitive Inhibitor", def: "A molecule that binds to an allosteric site, causing a conformational change in the enzyme that prevents the substrate from binding or reacting." },
+            { term: "Coenzyme", def: "A small, organic, non-protein molecule (like NADH or ATP) that binds temporarily to an enzyme to assist in catalysis by carrying groups or electrons." },
+            { term: "Saturation Point", def: "The concentration of substrate at which all available enzyme active sites are occupied, meaning the reaction rate cannot increase further." }
+        ],
+        keyKnowledge: [
+            { 
+                subhead: "The Role of Enzymes as Biological Catalysts", 
+                details: "Enzymes are specialized globular proteins that act as biological catalysts, meaning they accelerate chemical reactions without being consumed in the process. According to Jacaranda, they achieve this by lowering the activation energy (Ea) required for a reaction to proceed. Without enzymes, most biological reactions would occur too slowly to sustain life. The specificity of an enzyme is determined by its unique tertiary structure, which creates a specifically shaped active site. The 'Induced Fit Model' explains that the active site is not a static 'lock,' but rather a flexible structure that moulds itself around the substrate upon binding, creating an enzyme-substrate complex. This physical strain on the substrate's bonds facilitates the transition state, making it easier for products to form." 
+            },
+            { 
+                subhead: "Factors Affecting Enzyme Function and Denaturation", 
+                details: "Enzyme activity is heavily dependent on environmental variables, primarily temperature and pH. Each enzyme has an 'optimum' range where its catalytic rate is highest. As temperature increases towards the optimum, kinetic energy increases, leading to more frequent successful collisions between enzymes and substrates. However, exceeding the critical temperature causes the hydrogen and ionic bonds maintaining the tertiary structure to break. This results in 'denaturation,' where the active site loses its specific shape and can no longer bind to the substrate. pH changes similarly affect the ionization of amino acid R-groups, disrupting the shape. Furthermore, enzyme activity is limited by substrate concentration; once all active sites are saturated, the reaction rate plateaus regardless of further substrate addition." 
+            },
+            { 
+                subhead: "Regulation via Inhibition and Coenzymes", 
+                details: "Metabolic pathways are often regulated through inhibition to prevent the wasteful overproduction of substances. Competitive inhibitors compete directly for the active site, and their effects can be overcome by increasing substrate concentration. Non-competitive inhibitors bind to an allosteric site, inducing a conformational change that renders the active site unusable; this cannot be overcome by more substrate. Additionally, many enzymes require 'loaded' coenzymes (like ATP, NADH, or NADPH) to function. These organic molecules act as shuttle systems, transferring chemical groups, protons, or electrons between reactions. In a biochemical pathway, these coenzymes are cycled between their loaded and unloaded states (e.g., ATP to ADP + Pi), ensuring a continuous flow of energy and matter." 
+            }
+        ],
+        vceWebTricks: [
+            "1. Tertiary Structure is the 'magic word' for enzyme marks—always mention it in denaturation answers.",
+            "2. If a graph plateaus, explicitly state that 'enzyme concentration has become the limiting factor'.",
+            "3. Distinguish between 'Inhibition' (reversible/regulatory) and 'Denaturation' (permanent/structural damage).",
+            "4. Never say enzymes 'provide energy'; they only 'lower the activation energy barrier'.",
+            "5. Competitive inhibition can be 'outcompeted' by high substrate levels; non-competitive cannot.",
+            "6. Remember that enzymes are catalysts—they are recycled and remain unchanged at the end of a reaction.",
+            "7. pH curves are usually symmetrical (bell-shaped), whereas temperature curves drop off sharply after the optimum.",
+            "8. Use the term 'conformational change' when describing induced fit or allosteric binding.",
+            "9. Coenzymes are organic; if the question asks for inorganic helpers, use the term 'cofactors'.",
+            "10. In a biochemical pathway, the 'product' of Enzyme 1 is the 'substrate' for Enzyme 2."
+        ],
+        questions: [
+            { q: "Explain the 'Induced Fit Model' of enzyme action. [2 marks]", hint: "Focus on the flexible active site and conformational change." },
+            { q: "Why does a high fever (above 40°C) pose a danger to human metabolic processes? [3 marks]", hint: "Connect thermal energy to tertiary structure bonds and denaturation." },
+            { q: "Contrast competitive and non-competitive inhibitors in terms of binding sites. [2 marks]", hint: "Active site vs Allosteric site." },
+            { q: "Explain how a coenzyme becomes 'unloaded' and what this achieves. [2 marks]", hint: "Release of energy/protons to a reaction." },
+            { q: "What is a 'limiting factor' in the context of substrate concentration? [1 mark]", hint: "The factor that restricts the rate of reaction." },
+            { q: "Describe the relationship between an enzyme's primary structure and its function. [2 marks]", hint: "Primary determines folding, folding determines active site shape." },
+            { q: "How does pH affect the R-groups of an enzyme? [1 mark]", hint: "Alters ionization/charge, disrupting ionic bonds." },
+            { q: "Is an enzyme consumed in a biochemical reaction? [1 mark]", hint: "No, they are biological catalysts." },
+            { q: "At what point does an enzyme-catalyzed reaction reach V-max? [1 mark]", hint: "At the saturation point." },
+            { q: "Define a 'Biochemical Pathway'. [1 mark]", hint: "A series of linked enzymatic reactions." }
+        ]
             },
             6: {
                 title: "Cycling Coenzymes",
